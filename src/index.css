@@ -1,13 +1,31 @@
+@font-face {
+  font-family: Open-Sans-Hebrew;
+  src: url("./assets//fonts/open-sans-hebrew/OpenSansHebrew-Regular.ttf");
+}
+@font-face {
+  font-family: Open-Sans-Hebrew-Bold;
+  src: url("./assets//fonts/open-sans-hebrew/OpenSansHebrew-Bold.ttf");
+}
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Open-Sans-Hebrew, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  direction: rtl;
+}
+html {
+  /* width: 100vw; */
+}
+h4,
+h3,
+h5 {
+  margin: 0;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

@@ -1,0 +1,29 @@
+.card {
+  border-radius: 10px;
+  box-shadow: 0 2px 7px rgb(190, 190, 190);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 48%;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-bottom: 10px;
+  height: 184px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.cardHeaderContainer {
+  display: flex;
+  align-items: flex-start;
+}
+.cardHeaderContainer svg {
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+}
+.cardHeaderContainer h4 {
+  margin: 0;
+  display: flex;
+  text-align: start;
+}
