@@ -1,29 +1,35 @@
 .card {
   border-radius: 10px;
-  box-shadow: 0 2px 7px rgb(190, 190, 190);
+  box-shadow: 0 3px 15px -2px rgb(0 2 2 / 20%);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 48%;
   padding-top: 10px;
   padding-left: 5px;
-  padding-right: 5px;
+  padding-right: 7px;
   margin-bottom: 10px;
-  height: 184px;
+  min-height: 164px;
   background-color: #ffffff;
   overflow: hidden;
+  font-size: 0.95rem;
 }
 .cardHeaderContainer {
   display: flex;
   align-items: flex-start;
 }
 .cardHeaderContainer svg {
-  height: 20px;
+  height: 20px !important;
   width: 20px;
+  min-width: 1.25rem;
   margin-right: 20px;
 }
+
 .cardHeaderContainer h4 {
   margin: 0;
   display: flex;
   text-align: start;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 7px;
 }

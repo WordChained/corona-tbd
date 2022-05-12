@@ -1,11 +1,11 @@
 import './App.css';
-import { AppHeader } from './cmps/AppHeader';
+import { AppHeader } from './cmps/AppHeader/AppHeader';
 import { Dashboard } from './views/Dashboard';
 function App() {
   return (
     <div className="App">
-      <AppHeader/>
-      <Dashboard/>
+      <AppHeader />
+      <Dashboard />
     </div>
   );
 }

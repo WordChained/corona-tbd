@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.cardsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.breakable {
+  display: flex;
+  align-items: flex-start;
+}
+.breakable > * {
+  display: inline-block;
+  font-size: 0.75rem;
+  margin: 0 2px 0 2px;
+}
+.bold {
+  font-family: Open-Sans-Hebrew-Bold;
+}
+.bigCard {
+  border-radius: 10px;
+  box-shadow: 0 3px 15px -2px rgb(0 2 2 / 20%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  height: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.bigCard h3 {
+  font-size: 16px;
+  font-family: Open-Sans-Hebrew-Bold;
+  padding: 14px 10px 14px 22px;
+  line-height: 1.2;
+}
+.innerCardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.activeSick {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.colorStyleList {
+  text-align: start;
+  padding: 17px;
+  margin: 0;
+  list-style-type: disc;
+  align-items: center;
+}
+.doseList {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 7px;
+}
+.doseList li {
+  display: flex;
+  gap: 10px;
+}
+.doseList li span:nth-child(2) {
+  font-family: Open-Sans-Hebrew-Bold;
+}
+/* this looks better in my opinion, but i can also use something other than ul/li and just use pictures and spans */
+.colorStyleList li.red::marker {
+  color: rgb(226, 29, 72);
+}
+.colorStyleList li.yellow::marker {
+  color: rgb(230, 185, 87);
+}
+ul {
+  font-size: 0.85rem;
+}
+ul.noStyle {
+  list-style-type: none;
+  padding: 0;
+  padding-right: 5px;
+  text-align: start;
+}
+li span {
+  margin-left: 4px;
+}
+.positive {
+  display: flex;
+  flex-direction: column;
+}
+.positive div {
+  display: flex;
+  font-size: 0.79rem;
+  text-align: start;
+  gap: 10px;
+}
+.positive div span:first-child {
+  font-family: Open-Sans-Hebrew-Bold;
+}
+.col {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 10px;
+}
+.bigCardRow {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  font-size: 0.78rem;
+  text-align: start;
+  line-height: 1.5;
+}
+.numberDirection {
+  direction: ltr;
+}

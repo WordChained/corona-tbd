@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from "react";
-import styles from "./AppHeader.module.css";
-import logo from "../assets/imgs/logo_DAshboard-01.png";
-import brightnessDark from "../assets/icons/brightness_dark.png";
-import brightnessLight from "../assets/icons/brightness_light.png";
-import { useIntersection } from "../customHooks/useIntersection";
+import { useState, useEffect, useRef } from 'react';
+import styles from './AppHeader.module.css';
+import logo from '../../assets/imgs/logo_DAshboard-01.png';
+import brightnessDark from '../../assets/icons/brightness_dark.png';
+import brightnessLight from '../../assets/icons/brightness_light.png';
+import { useIntersection } from '../../customHooks/useIntersection';
 
-import { IoMenuOutline } from "react-icons/io5";
+import { IoMenuOutline } from 'react-icons/io5';
 export const AppHeader = () => {
   const navRef = useRef();
-  const inViewPort = useIntersection(navRef, "-50px");
+  const inViewPort = useIntersection(navRef, '-50px');
   useEffect(() => {
     if (!navRef) return;
   }, [inViewPort]);
@@ -21,11 +21,11 @@ export const AppHeader = () => {
             <IoMenuOutline />
           </button>
           <div className={styles.imgContainer}>
-            <img className={styles.logo} src={logo} alt="" />
+            <img className={styles.logo} src={logo} alt='' />
           </div>
         </div>
         <button className={styles.brightnessBtn}>
-          <img src={brightnessDark} alt="" />
+          <img src={brightnessDark} alt='' />
         </button>
         <h1 className={styles.updateTitle}>
           <b>נגיף הקורונה בישראל - תמונת מצב כללית</b>
@@ -53,7 +53,7 @@ export const AppHeader = () => {
           <li>עולם הדאטה</li>
         </ul>
       </nav>
-      <nav className={`${styles.navbar2} ${!inViewPort ? styles.show : ""}`}>
+      <nav className={`${styles.navbar2} ${!inViewPort ? styles.show : ''}`}>
         <ul>
           <li className={styles.active}>מבט על</li>
           <li>מדדים מרכזיים</li>

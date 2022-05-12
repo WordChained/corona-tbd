@@ -5,8 +5,14 @@
 }
 h2 {
   text-align: start;
+  font-size: 19px;
+  font-weight: 700;
+  font-family: Open-Sans-Hebrew-Bold;
+  line-height: 2.5;
+  margin-bottom: 7px;
 }
 
 .container h2:not(:first-of-type) {
   border-top: 1px solid rgba(161, 170, 177, 0.4);
+  margin-top: 40px;
 }

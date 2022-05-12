@@ -50,6 +50,7 @@
 .navbar2.show {
   top: 0;
   transition: top 0.3s linear;
+  z-index: 10;
 }
 .navbar ul,
 .navbar2 ul {
@@ -66,7 +67,7 @@
 .navbar2 ul li {
   width: max-content;
   border-radius: 3em;
-  padding: 6px 20px;
+  padding: 4px 20px;
   white-space: nowrap;
   color: white;
   font-weight: 500;
@@ -96,7 +97,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.01rem;
-  margin: 7px 10px 0 10px;
+  margin: 20px 10px 0 10px;
   font-family: Open-Sans-Hebrew, sans-serif;
   flex: 1 0;
   align-items: flex-start;
