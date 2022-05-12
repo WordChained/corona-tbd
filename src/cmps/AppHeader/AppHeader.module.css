@@ -1,6 +1,14 @@
 .overContainer {
   height: auto;
 }
+.line {
+  right: 0;
+  left: 0;
+  position: absolute;
+  z-index: 11;
+  height: 1px;
+  background: linear-gradient(90deg, #4bb887, #16b6d0, #d6e58a);
+}
 .mainHeader {
   display: flex;
   flex-direction: column;
@@ -10,18 +18,19 @@
   padding: 15px 5px;
   height: 100%;
 }
+
 .headerRight {
   display: flex;
 }
 .menuHamburgerBtn {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
+  align-self: center;
+  height: 3em;
+  width: 3em;
   padding: 5px;
   background-color: transparent;
   border: none;
+  margin-right: 10px;
 }
 .menuHamburgerBtn > * {
   height: 100%;
@@ -88,6 +97,7 @@
   color: white;
   font-weight: 500;
   font-size: 1rem;
+  cursor: pointer;
 }
 .navbar ul li.active,
 .navbar2 ul li.active {
@@ -103,12 +113,17 @@
 }
 .brightnessBtn {
   position: absolute;
+  display: flex;
   left: 0;
   top: 20px;
   margin-left: 0;
   border-radius: 0px 30px 30px 0;
   background-color: #39475d;
   border: none;
+  height: 45px;
+}
+.brightnessBtn img {
+  align-self: center;
 }
 .updateTitle {
   display: flex;
@@ -131,4 +146,24 @@
   align-items: flex-start;
   font-weight: 700;
   gap: 3px;
+}
+
+@media (min-width: 800px) {
+  .mainHeader {
+    flex-direction: row;
+  }
+  .updateTitle {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+  .updateTitle > * {
+    width: max-content;
+    font-size: 1rem;
+  }
+  .logo {
+    margin: 0 30px;
+    max-height: 47px;
+    width: 100%;
+  }
 }

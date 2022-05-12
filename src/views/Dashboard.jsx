@@ -50,7 +50,8 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
   const jumpToElement = (idx) => {
     switch (+idx) {
       case 1:
-        ref1.current.scrollIntoView({ block: "start" });
+        window.scrollTo(0, 0);
+        // ref1.current.scrollIntoView({ block: "start" });
         break;
       case 2:
         ref2.current.scrollIntoView({ block: "start" });

@@ -33,10 +33,11 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
     if (!navRef) return;
     //when scrolling back up, reset the scroll to the first child
     //might need to change when not on mobile
-    navRef.current.firstChild.children[0].scrollIntoView();
+    navRef.current.firstChild.children[0].scrollTo(0, 0);
   }, [inViewPort]);
 
-  const jumpToTitle = (elementInView) => {
+  const jumpToTitle = () => {
+    if (elementInView === null) return;
     const children = navRef.current.firstChild.children;
     const children2 = navRef2.current.firstChild.children;
     removeClasses(children);
@@ -102,10 +103,11 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
   };
   useEffect(() => {
     if (elementInView === null) return;
-    jumpToTitle(elementInView);
+    jumpToTitle();
   }, [elementInView]);
 
   const jumpToSection = (ev) => {
+    setClickedTitle(null);
     setClickedTitle(ev.target.id);
     const children = navRef.current.firstChild.children;
     const children2 = navRef2.current.firstChild.children;
@@ -123,6 +125,7 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
   };
   return (
     <section className={styles.overContainer}>
+      <div className={styles.line}></div>
       <header className={styles.mainHeader}>
         <div className={styles.headerRight}>
           <button className={styles.menuHamburgerBtn}>

@@ -19,6 +19,7 @@
     width: 100%;
     /* calculate number of cards and a bit more for the gap */
     max-width: calc(100% / 6.2);
+    min-width: max-content;
     height: 184px;
   }
   .card.summary {
