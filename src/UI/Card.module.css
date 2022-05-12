@@ -14,6 +14,20 @@
   overflow: hidden;
   font-size: 0.95rem;
 }
+@media (min-width: 800px) {
+  .card {
+    width: 100%;
+    /* calculate number of cards and a bit more for the gap */
+    max-width: calc(100% / 6.2);
+    height: 184px;
+  }
+  .card.summary {
+    height: 150px;
+    min-height: unset;
+    max-width: calc(100% / 4.2);
+    /* border: gold 2px solid; */
+  }
+}
 .cardHeaderContainer {
   display: flex;
   align-items: flex-start;

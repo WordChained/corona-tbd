@@ -1,13 +1,25 @@
-import React from 'react';
-import styles from './Overlook.module.css';
-import { Card } from '../../UI/Card';
+import React, { useEffect, useState } from "react";
+import styles from "./Overlook.module.css";
+import { Card } from "../../UI/Card";
+import { useWindowSize } from "../../customHooks/useWindowSize";
 export const Overlook = () => {
+  const [boldNumberSize, setBoldNumberSize] = useState({ fontSize: "1rem" });
+  const windowSize = useWindowSize();
+
+  useEffect(() => {
+    if (windowSize.width > 700) setBoldNumberSize({ fontSize: "1.4rem" });
+    else setBoldNumberSize({ fontSize: "1rem" });
+  }, [windowSize.width]);
+
   return (
     <section className={styles.container}>
       <div className={styles.cardsContainer}>
-        <Card title='מאומתים אתמול'>
-          <span className={`${styles.bold} ${styles.numberDirection}`}>
-            2761
+        <Card title="מאומתים אתמול">
+          <span
+            style={boldNumberSize}
+            className={`${styles.bold} ${styles.numberDirection}`}
+          >
+            2,761
           </span>
           <span className={styles.breakable}>
             <span className={`${styles.bold} ${styles.numberDirection}`}>
@@ -21,13 +33,16 @@ export const Overlook = () => {
           </span>
           <div className={styles.activeSick}>
             <span className={styles.bold}>חולים פעילים</span>
-            <span className={`${styles.bold} ${styles.numberDirection}`}>
+            <span
+              style={boldNumberSize}
+              className={`${styles.bold} ${styles.numberDirection}`}
+            >
               18,015
             </span>
           </div>
           <span className={styles.breakable}>
             <span className={`${styles.bold} ${styles.numberDirection}`}>
-              1378-
+              -1,378
             </span>
             <span>מחצות</span>
             <span className={`${styles.bold} ${styles.numberDirection}`}>
@@ -36,8 +51,11 @@ export const Overlook = () => {
             <span>בבי"ח</span>
           </span>
         </Card>
-        <Card title='חולים קשה'>
-          <span className={`${styles.bold} ${styles.numberDirection}`}>
+        <Card title="חולים קשה">
+          <span
+            style={boldNumberSize}
+            className={`${styles.bold} ${styles.numberDirection}`}
+          >
             115
           </span>
           <ul className={styles.colorStyleList}>
@@ -75,7 +93,7 @@ export const Overlook = () => {
             </li>
           </ul>
         </Card>
-        <Card title='מתחסנים'>
+        <Card title="מתחסנים">
           <ul className={styles.doseList}>
             <li>
               <span>מנה 1</span>
@@ -95,11 +113,16 @@ export const Overlook = () => {
             </li>
           </ul>
         </Card>
-        <Card title='נפטרים מצטבר'>
-          <div className={styles.bold}>10,749</div>
+        <Card title="נפטרים מצטבר">
+          <div style={boldNumberSize} className={styles.bold}>
+            10,749
+          </div>
         </Card>
-        <Card title='אחוז נבדקים חיוביים אתמול'>
-          <span className={`${styles.bold} ${styles.numberDirection}`}>
+        <Card title="אחוז נבדקים חיוביים אתמול">
+          <span
+            style={boldNumberSize}
+            className={`${styles.bold} ${styles.numberDirection}`}
+          >
             3.38%
           </span>
           <div className={styles.positive}>
@@ -113,21 +136,32 @@ export const Overlook = () => {
             </div>
           </div>
         </Card>
-        <Card title='מבודדים חדשים אתמול'>
-          <div className={`${styles.bold} ${styles.numberDirection}`}>
+        <Card title="מבודדים חדשים אתמול">
+          <div
+            style={boldNumberSize}
+            className={`${styles.bold} ${styles.numberDirection}`}
+          >
             22,438
           </div>
-          <div className={styles.bold}>
-            <span>סה"כ שוהים בבידוד</span>
-            <span className={styles.numberDirection}>8,075</span>
+          <div className={styles.col}>
+            <span className={styles.bold}>סה"כ שוהים בבידוד</span>
+            <span
+              style={boldNumberSize}
+              className={`${styles.bold} ${styles.numberDirection}`}
+            >
+              8,075
+            </span>
           </div>
         </Card>
       </div>
       <div className={styles.bigCard}>
         <h3>סיכום 7 ימים אחרונים</h3>
         <div className={styles.innerCardsContainer}>
-          <Card title='מספר המאומתים'>
-            <span className={`${styles.bold} ${styles.numberDirection}`}>
+          <Card title="מספר המאומתים" inSummary={true}>
+            <span
+              style={boldNumberSize}
+              className={`${styles.bold} ${styles.numberDirection}`}
+            >
               14,560
             </span>
             <div className={styles.bigCardRow}>
@@ -137,8 +171,13 @@ export const Overlook = () => {
               <span>משבעה ימים קודמים</span>
             </div>
           </Card>
-          <Card title='מספר חולים קשה'>
-            <div className={`${styles.bold} ${styles.numberDirection}`}>57</div>
+          <Card inSummary={true} title="מספר חולים קשה">
+            <div
+              style={boldNumberSize}
+              className={`${styles.bold} ${styles.numberDirection}`}
+            >
+              57
+            </div>
             <div className={styles.bigCardRow}>
               <span className={`${styles.bold} ${styles.numberDirection}`}>
                 {-44.1}%
@@ -146,8 +185,13 @@ export const Overlook = () => {
               <span>משבעה ימים קודמים</span>
             </div>
           </Card>
-          <Card title='מספר הנפטרים'>
-            <div className={`${styles.bold} ${styles.numberDirection}`}>3</div>
+          <Card inSummary={true} title="מספר הנפטרים">
+            <div
+              className={`${styles.bold} ${styles.numberDirection}`}
+              style={boldNumberSize}
+            >
+              3
+            </div>
             <div className={styles.bigCardRow}>
               <span className={`${styles.bold} ${styles.numberDirection}`}>
                 {-87.5}%
@@ -155,8 +199,13 @@ export const Overlook = () => {
               <span>משבעה ימים קודמים</span>
             </div>
           </Card>
-          <Card title='מספר נבדקים'>
-            <div className={`${styles.bold} ${styles.numberDirection}`}>3</div>
+          <Card inSummary={true} title="מספר נבדקים">
+            <div
+              style={boldNumberSize}
+              className={`${styles.bold} ${styles.numberDirection}`}
+            >
+              355,380
+            </div>
             <div className={styles.bigCardRow}>
               <span className={`${styles.bold} ${styles.numberDirection}`}>
                 +{5.1}%

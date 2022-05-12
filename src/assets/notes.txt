@@ -1,2 +1,6 @@
 1.  some places need to show if numbers are positive.
     use a trinary to check if the number is above or under 0 and 'sign' it (-/+)
+
+front Tasks:
+- add mock data
+- work on responsivity

@@ -1,10 +1,10 @@
 @font-face {
   font-family: Open-Sans-Hebrew;
-  src: url('./assets//fonts/open-sans-hebrew/OpenSansHebrew-Regular.ttf');
+  src: url("./assets//fonts/open-sans-hebrew/OpenSansHebrew-Regular.ttf");
 }
 @font-face {
   font-family: Open-Sans-Hebrew-Bold;
-  src: url('./assets//fonts/open-sans-hebrew/OpenSansHebrew-Bold.ttf');
+  src: url("./assets//fonts/open-sans-hebrew/OpenSansHebrew-Bold.ttf");
 }
 * {
   box-sizing: border-box;
@@ -19,6 +19,7 @@ body {
 html {
   /* width: 100vw; */
 }
+
 h4,
 h3,
 h5 {
@@ -27,6 +28,6 @@ h5 {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
