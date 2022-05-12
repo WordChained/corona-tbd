@@ -4,9 +4,11 @@ import logo from "../../assets/imgs/logo_DAshboard-01.png";
 import brightnessDark from "../../assets/icons/brightness_dark.png";
 import brightnessLight from "../../assets/icons/brightness_light.png";
 import { useIntersection } from "../../customHooks/useIntersection";
-
+import { useWindowSize } from "../../customHooks/useWindowSize";
 import { IoMenuOutline } from "react-icons/io5";
 export const AppHeader = ({ elementInView, setClickedTitle }) => {
+  const [stickHeader, setStickHeader] = useState(false);
+  const windowSize = useWindowSize();
   const navRef = useRef();
   const navRef2 = useRef();
 
@@ -27,7 +29,7 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
   const ref7nav2 = useRef();
 
   const inViewPort = useIntersection(navRef, "-50px");
-  const inViewPort2 = useIntersection(navRef2, "-50px");
+  // const inViewPort2 = useIntersection(navRef2, "-50px");
 
   useEffect(() => {
     if (!navRef) return;
@@ -35,6 +37,10 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
     //might need to change when not on mobile
     navRef.current.firstChild.children[0].scrollTo(0, 0);
   }, [inViewPort]);
+
+  useEffect(() => {
+    if (windowSize.width > 800) setStickHeader(true);
+  }, [windowSize.width]);
 
   const jumpToTitle = () => {
     if (elementInView === null) return;
@@ -119,12 +125,14 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
     inViewPort
       ? children[ev.target.id - 1].scrollIntoView({ inline: "center" })
       : children2[ev.target.id - 1].scrollIntoView({ inline: "center" });
-    setTimeout(() => {
-      window.scrollBy({ top: -100 });
-    }, 0);
+    // setTimeout(() => {
+    //   window.scrollBy({ top: -100 });
+    // }, 0);
   };
   return (
-    <section className={styles.overContainer}>
+    <section
+      className={`${styles.overContainer} ${stickHeader ? styles.stick : ""}`}
+    >
       <div className={styles.line}></div>
       <header className={styles.mainHeader}>
         <div className={styles.headerRight}>
@@ -173,7 +181,9 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
       </nav>
       <nav
         ref={navRef2}
-        className={`${styles.navbar2} ${!inViewPort ? styles.show : ""}`}
+        className={`${styles.navbar2} ${
+          !inViewPort && !stickHeader ? styles.show : ""
+        }`}
       >
         <ul>
           <li onClick={jumpToSection} id="1" ref={ref1nav2}>

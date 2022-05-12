@@ -8,8 +8,11 @@ import { Deceased } from "../cmps/Deceased/Deceased";
 import { PopulationVaccination } from "../cmps/PopulationVaccination/PopulationVaccination";
 import { Stoplight } from "../cmps/Stoplight/Stoplight";
 import { useIntersection } from "../customHooks/useIntersection";
+import { useWindowSize } from "../customHooks/useWindowSize";
 
 export const Dashboard = ({ setElementInView, clickedTitle }) => {
+  const windowSize = useWindowSize();
+  const [isHeaderFixed, setIsHeaderFixed] = useState(false);
   const ref1 = useRef();
   const ref2 = useRef();
   const ref3 = useRef();
@@ -46,6 +49,9 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
   useEffect(() => {
     jumpToElement(clickedTitle);
   }, [clickedTitle]);
+  useEffect(() => {
+    if (windowSize.width > 800) setIsHeaderFixed(true);
+  }, [windowSize.width]);
 
   const jumpToElement = (idx) => {
     switch (+idx) {
@@ -77,7 +83,9 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
     }
   };
   return (
-    <main className={styles.container}>
+    <main
+      className={`${styles.container} ${isHeaderFixed ? styles.pushUp : ""}`}
+    >
       <h2>מבט על</h2>
       <div ref={ref1} id="overlook">
         <Overlook />

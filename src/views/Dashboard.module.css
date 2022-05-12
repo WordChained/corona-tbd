@@ -4,6 +4,9 @@
   padding: 10px 10px 8px 10px;
   margin-bottom: 200px;
 }
+.container.pushUp {
+  margin-top: 126px;
+}
 h2 {
   text-align: start;
   font-size: 19px;

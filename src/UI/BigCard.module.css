@@ -15,6 +15,12 @@
   background-color: #ffffff;
   overflow: hidden;
 }
+@media (min-width: 910px) {
+  .card {
+    max-width: 430px;
+    width: 100%;
+  }
+}
 
 .cardHeaderContainer {
   display: flex;
