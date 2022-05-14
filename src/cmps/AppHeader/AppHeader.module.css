@@ -1,12 +1,14 @@
 .overContainer {
   height: auto;
   position: relative;
+  width: 100%;
   /* max-width: 100vw; */
 }
 
 .overContainer.stick {
   position: fixed;
   top: 0;
+  left: 0;
   background-color: white;
   z-index: 11;
 }

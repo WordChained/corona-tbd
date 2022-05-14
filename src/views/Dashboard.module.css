@@ -7,6 +7,11 @@
 .container.pushUp {
   margin-top: 126px;
 }
+@media (max-width: 800px) {
+  .container.pushUp {
+    margin-top: 166px;
+  }
+}
 h2 {
   text-align: start;
   font-size: 19px;

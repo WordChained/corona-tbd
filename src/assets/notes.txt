@@ -3,4 +3,5 @@
 
 front Tasks:
 - add mock data
-- work on responsivity
+- work on responsivity V
+
