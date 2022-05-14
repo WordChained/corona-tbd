@@ -34,6 +34,14 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
   const ref6InView = useIntersection(ref6, '-70px');
   const ref7InView = useIntersection(ref7, '-70px');
 
+  const title1Ref = useRef();
+  const title2Ref = useRef();
+  const title3Ref = useRef();
+  const title4Ref = useRef();
+  const title5Ref = useRef();
+  const title6Ref = useRef();
+  const title7Ref = useRef();
+
   // const [elementInView, setElementInView] = useState(ref1.current);
   useEffect(() => {
     if (ref1InView) setElementInView(ref1.current);
@@ -72,22 +80,22 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
         // ref1.current.scrollIntoView({ block: "start" });
         break;
       case 2:
-        ref2.current.scrollIntoView({ block: 'start' });
+        title2Ref.current.scrollIntoView(true);
         break;
       case 3:
-        ref3.current.scrollIntoView({ block: 'start' });
+        title3Ref.current.scrollIntoView(true);
         break;
       case 4:
-        ref4.current.scrollIntoView({ block: 'start' });
+        title4Ref.current.scrollIntoView(true);
         break;
       case 5:
-        ref5.current.scrollIntoView({ block: 'start' });
+        title5Ref.current.scrollIntoView(true);
         break;
       case 6:
-        ref6.current.scrollIntoView({ block: 'start' });
+        title6Ref.current.scrollIntoView(true);
         break;
       case 7:
-        ref7.current.scrollIntoView({ block: 'start' });
+        title7Ref.current.scrollIntoView(true);
         break;
 
       default:
@@ -98,31 +106,31 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
     <main
       className={`${styles.container} ${isHeaderFixed ? styles.pushUp : ''}`}
     >
-      <h2>מבט על</h2>
+      <h2 ref={title1Ref}>מבט על</h2>
       <div ref={ref1} id='overlook'>
         <Overlook weeklyData={weeklyData} dailyData={dailyData} />
       </div>
-      <h2>מדדים מרכזיים</h2>
+      <h2 ref={title2Ref}>מדדים מרכזיים</h2>
       <div ref={ref2} id='main-stats'>
         <MainStats />
       </div>
-      <h2>השפעת ההתחסנות על התחלואה</h2>
+      <h2 ref={title3Ref}>השפעת ההתחסנות על התחלואה</h2>
       <div ref={ref3} id='vax-on-morbidity'>
         <VaxOnMorbidity />
       </div>
-      <h2>נפטרים</h2>
+      <h2 ref={title4Ref}>נפטרים</h2>
       <div ref={ref4} id='deceased'>
         <Deceased />
       </div>
-      <h2>תחקורים נוספים</h2>
+      <h2 ref={title5Ref}>תחקורים נוספים</h2>
       <div ref={ref5} id='further-interrogations'>
         <FurtherInterrogations />
       </div>
-      <h2>התחסנות האוכלוסיה</h2>
+      <h2 ref={title6Ref}>התחסנות האוכלוסיה</h2>
       <div ref={ref6} id='population-vaccination'>
         <PopulationVaccination />
       </div>
-      <h2>רמזור</h2>
+      <h2 ref={title7Ref}>רמזור</h2>
       <div ref={ref7} id='Stoplight'>
         <Stoplight />
       </div>
