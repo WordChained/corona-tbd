@@ -18,7 +18,7 @@
   .card {
     width: 100%;
     /* calculate number of cards (and a bit more for the gap) */
-    max-width: calc(100% / 6.2);
+    max-width: calc(100% / 3.2);
     min-width: max-content;
     height: 184px;
   }
@@ -27,6 +27,11 @@
     min-height: unset;
     max-width: calc(100% / 4.2);
     /* border: gold 2px solid; */
+  }
+}
+@media (min-width: 1000px) {
+  .card {
+    max-width: calc(100% / 6.2);
   }
 }
 .cardHeaderContainer {
@@ -57,10 +62,12 @@
   z-index: 2;
   right: 0;
   padding: 3px;
+  text-align: start;
 }
 @media (max-width: 800px) {
   .infoBox {
     max-height: 130%;
+    max-width: 100%;
     overflow: scroll;
   }
 }

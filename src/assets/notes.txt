@@ -1,7 +1,16 @@
 1.  some places need to show if numbers are positive.
     use a trinary to check if the number is above or under 0 and 'sign' it (-/+)
 
-front Tasks:
-- add mock data
-- work on responsivity V
+ front Tasks:
+  - add mock data
+  - work on responsivity V
 
+daysDATABASE:
+ - years(2020,2021,2022)
+    - months (jan,feb...)
+        - random _id
+            - date
+            - morbid(number of light/medium/serious morbid cases)
+            - active (age,vaccineShotsTaken,total)
+            - confirmed(total)
+            - deceased(total)

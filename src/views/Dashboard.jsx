@@ -1,17 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
-import styles from './Dashboard.module.css';
-import { Overlook } from '../cmps/Overlook/Overlook';
-import { MainStats } from '../cmps/MainStats/MainStats';
-import { VaxOnMorbidity } from '../cmps/VaxOnMorbidity/VaxOnMorbidity';
-import { FurtherInterrogations } from '../cmps/FurtherInterrogations/FurtherInterrogations';
-import { Deceased } from '../cmps/Deceased/Deceased';
-import { PopulationVaccination } from '../cmps/PopulationVaccination/PopulationVaccination';
-import { Stoplight } from '../cmps/Stoplight/Stoplight';
-import { useIntersection } from '../customHooks/useIntersection';
-import { useWindowSize } from '../customHooks/useWindowSize';
+import React, { useEffect, useRef, useState } from "react";
+import styles from "./Dashboard.module.css";
+import { Overlook } from "../cmps/Overlook/Overlook";
+import { MainStats } from "../cmps/MainStats/MainStats";
+import { VaxOnMorbidity } from "../cmps/VaxOnMorbidity/VaxOnMorbidity";
+import { FurtherInterrogations } from "../cmps/FurtherInterrogations/FurtherInterrogations";
+import { Deceased } from "../cmps/Deceased/Deceased";
+import { PopulationVaccination } from "../cmps/PopulationVaccination/PopulationVaccination";
+import { Stoplight } from "../cmps/Stoplight/Stoplight";
+import { useIntersection } from "../customHooks/useIntersection";
+import { useWindowSize } from "../customHooks/useWindowSize";
 
 //
-import { MOCK_DATA } from '../mock-data';
+import { GeneralMorbidity } from "../cmps/GeneralMorbidity/GeneralMorbidity";
+import { ChildrenMorbidity } from "../cmps/ChildrenMorbidity/ChildrenMorbidity";
+import { AbroadMorbidity } from "../cmps/AbroadMorbidity/AbroadMorbidity";
+import { IllAndHospitalized } from "../cmps/IllAndHospitalized/IllAndHospitalized";
+//
+import { MOCK_DATA } from "../mock-data";
 
 export const Dashboard = ({ setElementInView, clickedTitle }) => {
   const windowSize = useWindowSize();
@@ -26,13 +31,13 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
   const ref6 = useRef();
   const ref7 = useRef();
 
-  const ref1InView = useIntersection(ref1, '-70px');
-  const ref2InView = useIntersection(ref2, '-70px');
-  const ref3InView = useIntersection(ref3, '-70px');
-  const ref4InView = useIntersection(ref4, '-70px');
-  const ref5InView = useIntersection(ref5, '-70px');
-  const ref6InView = useIntersection(ref6, '-70px');
-  const ref7InView = useIntersection(ref7, '-70px');
+  const ref1InView = useIntersection(ref1, "-70px");
+  const ref2InView = useIntersection(ref2, "-70px");
+  const ref3InView = useIntersection(ref3, "-70px");
+  const ref4InView = useIntersection(ref4, "-70px");
+  const ref5InView = useIntersection(ref5, "-70px");
+  const ref6InView = useIntersection(ref6, "-70px");
+  const ref7InView = useIntersection(ref7, "-70px");
 
   const title1Ref = useRef();
   const title2Ref = useRef();
@@ -66,6 +71,7 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
 
   useEffect(() => {
     if (windowSize.width > 800) setIsHeaderFixed(true);
+    else setIsHeaderFixed(false);
   }, [windowSize.width]);
 
   useEffect(() => {
@@ -104,34 +110,50 @@ export const Dashboard = ({ setElementInView, clickedTitle }) => {
   };
   return (
     <main
-      className={`${styles.container} ${isHeaderFixed ? styles.pushUp : ''}`}
+      className={`${styles.container} ${isHeaderFixed ? styles.pushUp : ""}`}
     >
       <h2 ref={title1Ref}>מבט על</h2>
-      <div ref={ref1} id='overlook'>
+      <div ref={ref1} id="overlook">
         <Overlook weeklyData={weeklyData} dailyData={dailyData} />
       </div>
       <h2 ref={title2Ref}>מדדים מרכזיים</h2>
-      <div ref={ref2} id='main-stats'>
+      <div ref={ref2} id="main-stats">
         <MainStats />
       </div>
+      {/* <h2>מדדי תחלואה כללית</h2>
+      <div id="general-morbidity">
+        <GeneralMorbidity />
+      </div> */}
+      {/* <h2>תחלואת ילדים</h2>
+      <div id="children-morbidity">
+        <ChildrenMorbidity />
+      </div> */}
+      {/* <h2>תחלואה מחו"ל</h2>
+      <div id="abroad-morbidity">
+        <AbroadMorbidity />
+      </div> */}
       <h2 ref={title3Ref}>השפעת ההתחסנות על התחלואה</h2>
-      <div ref={ref3} id='vax-on-morbidity'>
+      <div ref={ref3} id="vax-on-morbidity">
         <VaxOnMorbidity />
       </div>
+      {/* <h2>חולים קשה ומאושפזים</h2>
+      <div id="ill-and-hospitalized">
+        <IllAndHospitalized />
+      </div> */}
       <h2 ref={title4Ref}>נפטרים</h2>
-      <div ref={ref4} id='deceased'>
+      <div ref={ref4} id="deceased">
         <Deceased />
       </div>
       <h2 ref={title5Ref}>תחקורים נוספים</h2>
-      <div ref={ref5} id='further-interrogations'>
+      <div ref={ref5} id="further-interrogations">
         <FurtherInterrogations />
       </div>
       <h2 ref={title6Ref}>התחסנות האוכלוסיה</h2>
-      <div ref={ref6} id='population-vaccination'>
+      <div ref={ref6} id="population-vaccination">
         <PopulationVaccination />
       </div>
       <h2 ref={title7Ref}>רמזור</h2>
-      <div ref={ref7} id='Stoplight'>
+      <div ref={ref7} id="Stoplight">
         <Stoplight />
       </div>
     </main>

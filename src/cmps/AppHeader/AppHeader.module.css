@@ -140,7 +140,7 @@
   display: flex;
   flex-direction: column;
   font-size: 1.01rem;
-  margin: 20px 10px 0 10px;
+  margin: 20px 10px 0 40px;
   font-family: Open-Sans-Hebrew, sans-serif;
   flex: 1 0;
   align-items: flex-start;
@@ -162,11 +162,13 @@
 @media (min-width: 800px) {
   .mainHeader {
     flex-direction: row;
+    align-items: center;
   }
   .updateTitle {
     flex-direction: row;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
   }
   .updateTitle > * {
     width: max-content;
@@ -178,3 +180,8 @@
     width: 100%;
   }
 }
+/* @media (max-width: 950px) {
+  .updateTitle > * {
+    font-size: 0.85rem;
+  }
+} */

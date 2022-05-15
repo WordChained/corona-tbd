@@ -2,10 +2,15 @@
   background-color: #edf1f7;
   min-height: 90vh;
   padding: 10px 10px 8px 10px;
-  margin-bottom: 200px;
+  padding-bottom: 450px;
 }
 .container.pushUp {
   margin-top: 126px;
+}
+@media (min-width: 800px) {
+  .container {
+    padding-bottom: 450px;
+  }
 }
 @media (max-width: 800px) {
   .container.pushUp {

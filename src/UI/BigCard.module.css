@@ -62,3 +62,10 @@
     overflow: scroll;
   }
 }
+@media (max-width: 750px) {
+  .card {
+    /* width: calc(100% / 2.2); */
+    width: 100%;
+    max-width: none;
+  }
+}
