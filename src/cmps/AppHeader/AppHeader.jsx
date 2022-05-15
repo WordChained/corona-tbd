@@ -40,6 +40,7 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
 
   useEffect(() => {
     if (windowSize.width > 800) setStickHeader(true);
+    else setStickHeader(false);
   }, [windowSize.width]);
 
   const jumpToTitle = () => {
@@ -179,9 +180,7 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
       </nav>
       <nav
         ref={navRef2}
-        className={`${styles.navbar2} ${
-          !inViewPort && !stickHeader ? styles.show : ''
-        }`}
+        className={`${styles.navbar2} ${!inViewPort ? styles.show : ''}`}
       >
         <ul>
           <li onClick={jumpToSection} id='1' ref={ref1nav2}>
