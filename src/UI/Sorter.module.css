@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 200px;
+  max-width: 100%;
+}
+.mainDropdown {
+  border-radius: 3em;
+  border: 1px #e4e9f2 solid;
+  padding: 3px 10px 3px 10px;
+  min-width: 200px;
+  max-width: 100%;
+  width: max-content;
+  text-overflow: ellipsis;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arrow svg {
+  height: 20px;
+  width: 20px;
+  color: #a2acc0;
+  transition: all 0.7s;
+}
+.mainDropdown.open .arrow svg {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  display: none;
+  width: 100%;
+  background-color: white;
+  border: 1px #e4e9f2 solid;
+  /* padding: 3px; */
+  border-radius: 10px;
+  top: 110%;
+  right: 0;
+}
+
+.menu.open {
+  display: flex;
+  flex-direction: column;
+}

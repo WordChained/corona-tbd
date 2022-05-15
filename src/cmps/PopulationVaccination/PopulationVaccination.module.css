@@ -1,2 +1,42 @@
 .container {
+  overflow: hidden;
+}
+.btnContainer {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #e6f1f4;
+}
+button {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+.sorterChildrenContainer {
+}
+.sorterChildrenContainer input {
+  font-size: 0.8rem;
+  width: 97%;
+  margin: 3px;
+  padding: 2px 10px 2px 0;
+  line-height: 2;
+  /* color: #a2acc0; */
+  border-radius: 5px;
+  border: none;
+  border: 1px #e4e9f2 solid;
+  position: relative;
+}
+.closeIcon {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.closeIcon.show {
+  display: block;
+}
+.sorterChildrenContainer input::placeholder {
+  color: #a2acc0;
 }
