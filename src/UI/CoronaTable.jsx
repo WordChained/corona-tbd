@@ -8,14 +8,31 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
   useEffect(() => {
     const removeActiveClasses = (ev) => {
       ev.stopPropagation();
+      let target;
+      switch (ev.target.tagName.toLowerCase()) {
+        case 'span':
+          target = ev.target.parentElement;
+          break;
+        case 'svg':
+          target = ev.target?.parentElement?.parentElement;
+          break;
+        case 'path':
+          target = ev.target?.parentElement?.parentElement;
+          break;
+        default:
+          target = ev.target;
+          break;
+      }
       if (
-        ev.target.parentElement === tableHeaderRef.current ||
-        ev.target.parentElement.parentElement === tableHeaderRef.current
+        target?.parentElement === tableHeaderRef.current ||
+        target?.parentElement?.parentElement === tableHeaderRef.current
       )
         return;
       const children = tableHeaderRef.current.children;
       for (let i = 0; i < children.length; i++) {
-        tableHeaderRef.current.children[i].classList.remove(`${styles.active}`);
+        tableHeaderRef.current.children[i].firstChild.classList.remove(
+          `${styles.active}`
+        );
       }
     };
     document.addEventListener('click', removeActiveClasses);
@@ -25,32 +42,61 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
   }, []);
 
   const onHeaderClick = (ev) => {
-    if (ev.target.parentElement !== tableHeaderRef.current) return;
+    let target;
+    switch (ev.target.tagName.toLowerCase()) {
+      case 'span':
+        target = ev.target.parentElement;
+        break;
+      case 'svg':
+        target = ev.target.parentElement.parentElement;
+        break;
+      case 'path':
+        target = ev.target.parentElement.parentElement.parentElement;
+        break;
+      default:
+        target = ev.target;
+        break;
+    }
     const children = tableHeaderRef.current.children;
     for (let i = 0; i < children.length; i++) {
-      children[i].classList.remove(`${styles.active}`);
+      children[i].firstChild.classList.remove(`${styles.active}`);
     }
-    ev.target.classList.add(`${styles.active}`);
+    target.classList.add(`${styles.active}`);
   };
+
   const onTitleClick = (ev) => {
+    let target;
+    switch (ev.target.tagName.toLowerCase()) {
+      case 'span':
+        target = ev.target.parentElement;
+        break;
+      case 'svg':
+        target = ev.target.parentElement.parentElement;
+        break;
+      case 'path':
+        target = ev.target.parentElement.parentElement.parentElement;
+        break;
+      default:
+        target = ev.target;
+        break;
+    }
     const children = tableHeaderRef.current.children;
     for (let i = 0; i < children.length; i++) {
-      children[i].classList.remove(`${styles.active}`);
+      children[i].firstChild.classList.remove(`${styles.active}`);
     }
-    ev.target.parentElement.classList.add(`${styles.active}`);
-    if (ev.target !== currentElement) {
-      setCurrentElement(ev.target);
+    if (target !== currentElement) {
+      setCurrentElement(target);
       setIsDownSort(true);
-      sortFunction(ev.target.id, -1);
+      sortFunction(target.id, -1);
       return;
     }
     if (!currentElement) {
-      setCurrentElement(ev.target);
+      setCurrentElement(target);
       setIsDownSort(true);
-      sortFunction(ev.target.id, -1);
+      sortFunction(target.id, -1);
     } else if (isDownSort && currentElement) {
       setIsDownSort(false);
-      sortFunction(ev.target.id, 1);
+      sortFunction(target.id, 1);
     } else {
       setIsDownSort(false);
       setCurrentElement(null);

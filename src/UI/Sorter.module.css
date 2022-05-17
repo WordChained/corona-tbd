@@ -5,6 +5,7 @@
   min-width: 200px;
   max-width: 100%;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 .mainDropdown {
   border-radius: 3em;

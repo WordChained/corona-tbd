@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import styles from "./Stoplight.module.css";
-import { BigCard } from "../../UI/BigCard";
-import { stoplightInfo } from "../../views/infoBoxData";
-import { IoIosInformationCircle } from "react-icons/io";
-import { FiSearch, FiArrowDown } from "react-icons/fi";
-import { GrShareOption } from "react-icons/gr";
-import { CoronaTable } from "../../UI/CoronaTable";
-import { MOCK_DATA } from "../../mock-data";
-import { formatNumber } from "../../services/utilService";
+import React, { useState, useRef, useEffect } from 'react';
+import styles from './Stoplight.module.css';
+import { BigCard } from '../../UI/BigCard';
+import { stoplightInfo } from '../../views/infoBoxData';
+import { IoIosInformationCircle } from 'react-icons/io';
+import { FiSearch, FiArrowDown } from 'react-icons/fi';
+import { GrShareOption } from 'react-icons/gr';
+import { CoronaTable } from '../../UI/CoronaTable';
+import { MOCK_DATA } from '../../mock-data';
+import { formatNumber } from '../../services/utilService';
 export const Stoplight = () => {
   const sortLocations = (titleIdx, direction) => {
     // console.log("sorting...", titleIdx);
@@ -17,7 +17,7 @@ export const Stoplight = () => {
         switch (true) {
           case direction < 0:
             //-1
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b._id - a._id;
               })
@@ -25,7 +25,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a._id - b._id;
               })
@@ -37,7 +37,7 @@ export const Stoplight = () => {
         //ציון וצבע יומי
         switch (true) {
           case direction < 0:
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b.dailyScore - a.dailyScore;
               })
@@ -45,7 +45,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a.dailyScore - b.dailyScore;
               })
@@ -57,7 +57,7 @@ export const Stoplight = () => {
         //חולים חדשים לכל 10,000 נפש
         switch (true) {
           case direction < 0:
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b.newCasesPer10K - a.newCasesPer10K;
               })
@@ -65,7 +65,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a.newCasesPer10K - b.newCasesPer10K;
               })
@@ -77,7 +77,7 @@ export const Stoplight = () => {
         //% הבדיקות החיוביות
         switch (true) {
           case direction < 0:
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b.percentOfPositiveTests - a.percentOfPositiveTests;
               })
@@ -85,7 +85,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a.vaxShot3 - b.vaxShot3;
               })
@@ -97,7 +97,7 @@ export const Stoplight = () => {
         //שיעור שינוי מאומתים
         switch (true) {
           case direction < 0:
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b.rateOfConfirmed - a.rateOfConfirmed;
               })
@@ -105,7 +105,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a.rateOfConfirmed - b.rateOfConfirmed;
               })
@@ -117,7 +117,7 @@ export const Stoplight = () => {
         //חולים פעילים
         switch (true) {
           case direction < 0:
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return b.activeMorbid - a.activeMorbid;
               })
@@ -125,7 +125,7 @@ export const Stoplight = () => {
             break;
           default:
             //direction === 0
-            setData(
+            setFilteredData(
               [...data].sort((a, b) => {
                 return a.activeMorbid - b.activeMorbid;
               })
@@ -135,7 +135,7 @@ export const Stoplight = () => {
         break;
 
       default:
-        setData(
+        setFilteredData(
           [...data].sort((a, b) => {
             return a._id - b._id;
           })
@@ -160,18 +160,18 @@ export const Stoplight = () => {
   const getColorForDailyScore = (score) => {
     switch (true) {
       case score <= 4.5:
-        return "#b8de92";
+        return '#b8de92';
       //green
       case score <= 6:
-        return "#fcfc70";
+        return '#fcfc70';
       //yellow
       case score <= 7.5:
-        return "#f2c580";
+        return '#f2c580';
       //orange
-      case score === "אין מידע":
-        return "transparent";
+      case score === 'אין מידע':
+        return 'transparent';
       default:
-        return "#fa9e8f";
+        return '#fa9e8f';
       //red
     }
   };
@@ -200,7 +200,6 @@ export const Stoplight = () => {
   const filterData = () => {
     if (!inputRef.current.value.length) {
       setFilteredData(data);
-      console.log("this this");
     } else {
       const afterFilter = [...filteredData].filter((d) =>
         d.location.includes(inputRef.current.value)
@@ -220,7 +219,7 @@ export const Stoplight = () => {
   return (
     <section className={styles.container}>
       <BigCard
-        title={"תכנית הרמזור"}
+        title={'תכנית הרמזור'}
         showMoreIcon={false}
         info={stoplightInfo}
         isFullWidth={true}
@@ -246,8 +245,8 @@ export const Stoplight = () => {
                 <input
                   onInput={onInput}
                   ref={inputRef}
-                  type="text"
-                  placeholder={"חיפוש ישוב"}
+                  type='text'
+                  placeholder={'חיפוש ישוב'}
                 />
                 {!!suggestions.length && (
                   <div className={styles.suggestions}>
@@ -302,12 +301,12 @@ export const Stoplight = () => {
         </div>
         <CoronaTable
           titles={[
-            "ישוב",
-            "ציון וצבע יומי",
-            "חולים חדשים לכל 10,000 נפש *",
-            "% הבדיקות החיוביות *",
-            "שיעור שינוי מאומתים *",
-            "חולים פעילים",
+            'ישוב',
+            'ציון וצבע יומי',
+            'חולים חדשים לכל 10,000 נפש *',
+            '% הבדיקות החיוביות *',
+            'שיעור שינוי מאומתים *',
+            'חולים פעילים',
           ]}
           sortFunction={sortLocations}
         >
@@ -320,39 +319,39 @@ export const Stoplight = () => {
                   <div
                     style={{
                       backgroundColor: getColorForDailyScore(
-                        row.dailyScore ? row.dailyScore : "אין מידע"
+                        row.dailyScore ? row.dailyScore : 'אין מידע'
                       ),
                     }}
                   >
-                    {row.dailyScore ? row.dailyScore : "אין מידע"}
+                    {row.dailyScore ? row.dailyScore : 'אין מידע'}
                   </div>
                 </div>
                 <div>
-                  {row.newCasesPer10K ? row.newCasesPer10K : "אין מידע"}
+                  {row.newCasesPer10K ? row.newCasesPer10K : 'אין מידע'}
                 </div>
                 <div>
                   <span>
                     {!row.percentOfPositiveTests
-                      ? "אין מידע"
+                      ? 'אין מידע'
                       : row.percentOfPositiveTests < 90
-                      ? row.percentOfPositiveTests + "%"
-                      : "מעל 90%"}
+                      ? row.percentOfPositiveTests + '%'
+                      : 'מעל 90%'}
                   </span>
                 </div>
                 <div>
                   <span>
                     {!row.rateOfConfirmed
-                      ? "אין מידע"
-                      : formatNumber(row.rateOfConfirmed) + "%"}
+                      ? 'אין מידע'
+                      : formatNumber(row.rateOfConfirmed) + '%'}
                   </span>
                 </div>
                 <div>
                   <span>
                     {!row.activeMorbid
-                      ? "אין מידע"
+                      ? 'אין מידע'
                       : row.activeMorbid >= 15
                       ? row.activeMorbid
-                      : "קטן מ-15"}
+                      : 'קטן מ-15'}
                   </span>
                 </div>
               </div>
