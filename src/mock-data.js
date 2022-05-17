@@ -20,6 +20,7 @@ const getLocationsData = async (limit = 100) => {
         newCasesPer10K: _getRandomDecimal(0, 100, 1),
         rateOfConfirmed: _getRandomInt(-100, 100),
         activeMorbid: _getRandomInt(0, 2000),
+        percentOfPositiveTests: _getRandomInt(0, 70),
       });
     });
   } catch (error) {
@@ -115,7 +116,6 @@ function _getRandomDecimal(min, max, decimalPlaces) {
 const getMockDataByDays_total = () => {
   //fist covid-19 case was 21/2/2020, so no january in 2020
   //this is probably how the "days" collection will look like
-
   return {
     2020: {
       feb: {

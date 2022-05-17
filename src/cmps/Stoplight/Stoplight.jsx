@@ -34,87 +34,7 @@ export const Stoplight = () => {
         }
         break;
       case 1:
-        //מתחסנים מנה ראשונה
-        switch (true) {
-          case direction < 0:
-            setData(
-              [...data].sort((a, b) => {
-                return b.vaxShot1 - a.vaxShot1;
-              })
-            );
-            break;
-          default:
-            //direction === 0
-            setData(
-              [...data].sort((a, b) => {
-                return a.vaxShot1 - b.vaxShot1;
-              })
-            );
-            break;
-        }
-        break;
-      case 2:
-        //מתחסנים מנה שנייה
-        switch (true) {
-          case direction < 0:
-            setData(
-              [...data].sort((a, b) => {
-                return b.vaxShot2 - a.vaxShot2;
-              })
-            );
-            break;
-          default:
-            //direction === 0
-            setData(
-              [...data].sort((a, b) => {
-                return a.vaxShot2 - b.vaxShot2;
-              })
-            );
-            break;
-        }
-        break;
-      case 3:
-        //מתחסנים מנה שלישית
-        switch (true) {
-          case direction < 0:
-            setData(
-              [...data].sort((a, b) => {
-                return b.vaxShot3 - a.vaxShot3;
-              })
-            );
-            break;
-          default:
-            //direction === 0
-            setData(
-              [...data].sort((a, b) => {
-                return a.vaxShot3 - b.vaxShot3;
-              })
-            );
-            break;
-        }
-        break;
-      case 4:
-        //חולים פעילים לכל 10,000 נפש
-        switch (true) {
-          case direction < 0:
-            setData(
-              [...data].sort((a, b) => {
-                return b.activeMorbidPer10K - a.activeMorbidPer10K;
-              })
-            );
-            break;
-          default:
-            //direction === 0
-            setData(
-              [...data].sort((a, b) => {
-                return a.activeMorbidPer10K - b.activeMorbidPer10K;
-              })
-            );
-            break;
-        }
-        break;
-      case 5:
-        //ציון יומי מחושב
+        //ציון וצבע יומי
         switch (true) {
           case direction < 0:
             setData(
@@ -133,6 +53,86 @@ export const Stoplight = () => {
             break;
         }
         break;
+      case 2:
+        //חולים חדשים לכל 10,000 נפש
+        switch (true) {
+          case direction < 0:
+            setData(
+              [...data].sort((a, b) => {
+                return b.newCasesPer10K - a.newCasesPer10K;
+              })
+            );
+            break;
+          default:
+            //direction === 0
+            setData(
+              [...data].sort((a, b) => {
+                return a.newCasesPer10K - b.newCasesPer10K;
+              })
+            );
+            break;
+        }
+        break;
+      case 3:
+        //% הבדיקות החיוביות
+        switch (true) {
+          case direction < 0:
+            setData(
+              [...data].sort((a, b) => {
+                return b.percentOfPositiveTests - a.percentOfPositiveTests;
+              })
+            );
+            break;
+          default:
+            //direction === 0
+            setData(
+              [...data].sort((a, b) => {
+                return a.vaxShot3 - b.vaxShot3;
+              })
+            );
+            break;
+        }
+        break;
+      case 4:
+        //שיעור שינוי מאומתים
+        switch (true) {
+          case direction < 0:
+            setData(
+              [...data].sort((a, b) => {
+                return b.rateOfConfirmed - a.rateOfConfirmed;
+              })
+            );
+            break;
+          default:
+            //direction === 0
+            setData(
+              [...data].sort((a, b) => {
+                return a.rateOfConfirmed - b.rateOfConfirmed;
+              })
+            );
+            break;
+        }
+        break;
+      case 5:
+        //חולים פעילים
+        switch (true) {
+          case direction < 0:
+            setData(
+              [...data].sort((a, b) => {
+                return b.activeMorbid - a.activeMorbid;
+              })
+            );
+            break;
+          default:
+            //direction === 0
+            setData(
+              [...data].sort((a, b) => {
+                return a.activeMorbid - b.activeMorbid;
+              })
+            );
+            break;
+        }
+        break;
 
       default:
         setData(
@@ -143,17 +143,20 @@ export const Stoplight = () => {
         break;
     }
   };
-  const [isOpen, setIsOpen] = useState(false);
-  const [isText, setIsText] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
   const [data, setData] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const inputRef = useRef();
+
   const onInput = (ev) => {
-    if (ev.target.value.length > 0) {
-      setIsText(true);
-    } else setIsText(false);
     filterSuggestions(ev.target.value);
+    let timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      filterData();
+    }, 700);
   };
+
   const getColorForDailyScore = (score) => {
     switch (true) {
       case score <= 4.5:
@@ -177,6 +180,7 @@ export const Stoplight = () => {
       const locationsData = await MOCK_DATA.getLocationsData(100);
       // console.log('locations:', locationsData);
       setData(locationsData);
+      setFilteredData(locationsData);
     } catch (er) {
       console.log(er);
     }
@@ -187,18 +191,28 @@ export const Stoplight = () => {
       return;
     }
     // setSuggestions();
-    //returning only 5 options
-    let filteredLocations = data.filter((d) => {
+    const filteredLocations = data.filter((d) => {
       return d.location.includes(term);
     });
-    filteredLocations = filteredLocations.filter((d, idx) => idx < 5);
     setSuggestions(filteredLocations.map((loc) => loc.location) || []);
   };
+
   const filterData = () => {
-    if (!inputRef.current.value.length) getLocations();
-    setData(
-      [...data].filter((d) => d.location.includes(inputRef.current.value))
-    );
+    if (!inputRef.current.value.length) {
+      setFilteredData(data);
+      console.log("this this");
+    } else {
+      const afterFilter = [...filteredData].filter((d) =>
+        d.location.includes(inputRef.current.value)
+      );
+      if (!afterFilter.length) setFilteredData(data);
+      else setFilteredData(afterFilter);
+    }
+  };
+
+  const pickSuggestions = (ev) => {
+    inputRef.current.value = ev.target.innerText;
+    setSuggestions([]);
   };
   useEffect(() => {
     if (!data.length) getLocations();
@@ -226,10 +240,24 @@ export const Stoplight = () => {
             </div>
             <div className={styles.inputAndBtns}>
               <div className={styles.inputContainer}>
-                <span>
+                <span className={styles.searchIcon}>
                   <FiSearch />
                 </span>
-                <input ref={inputRef} type="text" placeholder={"חיפוש ישוב"} />
+                <input
+                  onInput={onInput}
+                  ref={inputRef}
+                  type="text"
+                  placeholder={"חיפוש ישוב"}
+                />
+                {!!suggestions.length && (
+                  <div className={styles.suggestions}>
+                    {suggestions.map((loc, idx) => (
+                      <span onClick={pickSuggestions} key={idx}>
+                        {loc}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className={styles.btns}>
                 <span>
@@ -284,7 +312,7 @@ export const Stoplight = () => {
           sortFunction={sortLocations}
         >
           <div className={styles.allRows}>
-            {data.map((row, idx) => (
+            {filteredData.map((row, idx) => (
               <div key={idx} className={styles.row}>
                 {/* {console.log('row:', row)} */}
                 <div className={styles.location}>{row.location}</div>
@@ -304,10 +332,10 @@ export const Stoplight = () => {
                 </div>
                 <div>
                   <span>
-                    {!row.rateOfPositiveCases
+                    {!row.percentOfPositiveTests
                       ? "אין מידע"
-                      : row.rateOfPositiveCases < 90
-                      ? row.rateOfPositiveCases + "%"
+                      : row.percentOfPositiveTests < 90
+                      ? row.percentOfPositiveTests + "%"
                       : "מעל 90%"}
                   </span>
                 </div>
