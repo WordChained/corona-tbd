@@ -55,19 +55,23 @@
 }
 .infoBox {
   background-color: white;
-  border: black solid 1px;
+  /* border: black solid 1px; */
   white-space: pre-wrap;
   position: absolute;
   width: 250px;
-  z-index: 2;
   right: 0;
-  padding: 3px;
+  padding: 10px;
   text-align: start;
+  border-radius: 3px;
+  z-index: 5;
+  box-shadow: 0 0 10px 1px rgba(159, 155, 155, 0.479);
+  border: rgb(199, 193, 193) solid 1px;
 }
 @media (max-width: 800px) {
   .infoBox {
     max-height: 130%;
     max-width: 100%;
-    overflow: scroll;
+    overflow: auto;
+    font-size: 0.8rem;
   }
 }

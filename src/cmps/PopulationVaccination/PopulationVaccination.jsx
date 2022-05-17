@@ -6,6 +6,7 @@ import { CoronaTable } from "../../UI/CoronaTable";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MOCK_DATA } from "../../mock-data";
 import { PercentBar } from "../../UI/PercentBar";
+import { vaxByLocationInfo } from "../../views/infoBoxData";
 export const PopulationVaccination = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isText, setIsText] = useState(false);
@@ -223,7 +224,11 @@ export const PopulationVaccination = () => {
 
   return (
     <section className={styles.container}>
-      <BigCard title={"התחסנות לפי ישובים"} isFullWidth={true}>
+      <BigCard
+        title={"התחסנות לפי ישובים"}
+        isFullWidth={true}
+        info={vaxByLocationInfo}
+      >
         <Sorter
           placeholder={"כלל הישובים"}
           isOpen={isOpen}

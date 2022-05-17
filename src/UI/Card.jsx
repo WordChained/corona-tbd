@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import styles from './Card.module.css';
-import { IoIosInformationCircle } from 'react-icons/io';
-import { useWindowSize } from '../customHooks/useWindowSize';
+import React, { useState } from "react";
+import styles from "./Card.module.css";
+import { IoIosInformationCircle } from "react-icons/io";
+import { useWindowSize } from "../customHooks/useWindowSize";
 export const Card = ({
   children,
   title,
   showInfoIcon = true,
   inSummary = false,
-  info = '',
+  info = "",
 }) => {
   const [showInfo, setShowInfo] = useState(false);
   const windowSize = useWindowSize();
@@ -24,7 +24,7 @@ export const Card = ({
     setShowInfo(true);
   };
   return (
-    <div className={`${styles.card} ${inSummary ? styles.summary : ''}`}>
+    <div className={`${styles.card} ${inSummary ? styles.summary : ""}`}>
       <div className={styles.cardHeaderContainer}>
         <h4>{title}</h4>
         <div
@@ -32,7 +32,7 @@ export const Card = ({
           onMouseOver={onInfoHover}
           onMouseLeave={closeInfoBox}
         >
-          <IoIosInformationCircle />
+          {showInfoIcon && <IoIosInformationCircle />}
           {showInfo && <div className={styles.infoBox}>{info}</div>}
         </div>
       </div>
