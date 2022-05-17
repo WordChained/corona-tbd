@@ -9,6 +9,7 @@ export const BigCard = ({
   showInfoIcon = true,
   showMoreIcon = true,
   info = '',
+  isFullWidth = false,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
   const windowSize = useWindowSize();
@@ -25,7 +26,7 @@ export const BigCard = ({
     setShowInfo(true);
   };
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${isFullWidth ? styles.fullWidth : ''}`}>
       <div className={styles.cardHeaderContainer}>
         <h4>{title}</h4>
         {showInfoIcon && (

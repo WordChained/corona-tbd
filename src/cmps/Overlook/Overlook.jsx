@@ -14,7 +14,7 @@ import {
   seriouslyIllPast7DaysInfo,
   deceasedPast7DaysInfo,
   testedPast7DaysInfo,
-} from './infoBoxData';
+} from '../../views/infoBoxData';
 export const Overlook = ({ dailyData, weeklyData }) => {
   const [boldNumberSize, setBoldNumberSize] = useState({ fontSize: '1rem' });
   const windowSize = useWindowSize();

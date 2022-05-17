@@ -4,10 +4,11 @@
   position: relative;
   min-width: 200px;
   max-width: 100%;
+  margin-bottom: 10px;
 }
 .mainDropdown {
   border-radius: 3em;
-  border: 1px #e4e9f2 solid;
+  border: 1px #e3e5ea solid;
   padding: 3px 10px 3px 10px;
   min-width: 200px;
   max-width: 100%;
@@ -15,6 +16,7 @@
   text-overflow: ellipsis;
   display: flex;
   justify-content: space-between;
+  background-color: #e9ecf286;
 }
 
 .arrow svg {
@@ -42,4 +44,5 @@
 .menu.open {
   display: flex;
   flex-direction: column;
+  z-index: 5;
 }

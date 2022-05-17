@@ -1,5 +1,28 @@
 import axios from "axios";
 
+const getLocationsData = async (limit = 100) => {
+  const locations = []
+  try {
+    const citiesNames = await axios.get(`https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=${limit}`)
+    // console.log(citiesNames.data.result.records);
+    citiesNames.data.result.records.forEach(cityName => {
+      if (cityName._id === 1) return
+      locations.push({
+        _id: cityName._id,
+        location: cityName["שם_ישוב"],
+        vaxShot1: _getRandomInt(70, 95),
+        vaxShot2: _getRandomInt(60, 91),
+        vaxShot3: _getRandomInt(10, 50),
+        activeMorbidPer10K: _getRandomDecimal(0, 100, 1),
+        dailyScore: _getRandomDecimal(0, 10, 1)
+      })
+    });
+  } catch (error) {
+    console.log("getLocationsData error:", error);
+  }
+  return locations
+}
+
 const getMockData_daily = () => {
   return {
     morbid: {
@@ -76,7 +99,11 @@ function _getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-
+function _getRandomDecimal(min, max, decimalPlaces) {
+  var rand = Math.random() < 0.5 ? ((1 - Math.random()) * (max - min) + min) : (Math.random() * (max - min) + min);  // could be min or max or anything in between
+  var power = Math.pow(10, decimalPlaces);
+  return Math.floor(rand * power) / power;
+}
 const getMockDataByDays_total = () => {
   //fist covid-19 case was 21/2/2020, so no january in 2020
   //this is probably how the "days" collection will look like
@@ -1715,4 +1742,5 @@ export const MOCK_DATA = {
   getMockData_daily,
   getMockData_weekly,
   getMockDataByDays_total,
+  getLocationsData
 };

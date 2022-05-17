@@ -21,6 +21,11 @@
     width: 600px;
   }
 }
+.card.fullWidth {
+  width: 100%;
+  max-width: unset;
+  /* max-height: 400px; */
+}
 
 .cardHeaderContainer {
   display: flex;
