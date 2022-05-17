@@ -63,6 +63,7 @@
 @media (min-width: 800px) {
   .tableHeader > * {
     padding: 0;
+    font-size: 14px;
   }
   .arrow {
     bottom: -6px;

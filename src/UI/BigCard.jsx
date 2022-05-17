@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import styles from './BigCard.module.css';
-import { RiMore2Fill } from 'react-icons/ri';
-import { IoIosInformationCircle } from 'react-icons/io';
-import { useWindowSize } from '../customHooks/useWindowSize';
+import React, { useState } from "react";
+import styles from "./BigCard.module.css";
+import { RiMore2Fill } from "react-icons/ri";
+import { IoIosInformationCircle } from "react-icons/io";
+import { useWindowSize } from "../customHooks/useWindowSize";
 export const BigCard = ({
   children,
   title,
   showInfoIcon = true,
   showMoreIcon = true,
-  info = '',
+  info = "",
   isFullWidth = false,
 }) => {
   const [showInfo, setShowInfo] = useState(false);
@@ -26,7 +26,7 @@ export const BigCard = ({
     setShowInfo(true);
   };
   return (
-    <div className={`${styles.card} ${isFullWidth ? styles.fullWidth : ''}`}>
+    <div className={`${styles.card} ${isFullWidth ? styles.fullWidth : ""}`}>
       <div className={styles.cardHeaderContainer}>
         <h4>{title}</h4>
         {showInfoIcon && (

@@ -87,7 +87,7 @@
 }
 .doseList li span:nth-child(2) {
   font-family: Open-Sans-Hebrew-Bold;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 /* this looks better in my opinion, but i can also use something other than ul/li and just use pictures and spans */
 .colorStyleList li.red::marker {
