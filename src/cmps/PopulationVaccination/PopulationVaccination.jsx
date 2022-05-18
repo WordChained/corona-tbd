@@ -1,12 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
-import { BigCard } from "../../UI/BigCard";
-import styles from "./PopulationVaccination.module.css";
-import { Sorter } from "../../UI/Sorter";
-import { CoronaTable } from "../../UI/CoronaTable";
-import { IoIosCloseCircle } from "react-icons/io";
-import { MOCK_DATA } from "../../mock-data";
-import { PercentBar } from "../../UI/PercentBar";
-import { vaxByLocationInfo } from "../../views/infoBoxData";
+import React, { useState, useRef, useEffect } from 'react';
+import { BigCard } from '../../UI/BigCard';
+import styles from './PopulationVaccination.module.css';
+import { Sorter } from '../../UI/Sorter';
+import { CoronaTable } from '../../UI/CoronaTable';
+import { IoIosCloseCircle } from 'react-icons/io';
+import { MOCK_DATA } from '../../mock-data';
+import { PercentBar } from '../../UI/PercentBar';
+import { vaxByLocationInfo } from '../../views/infoBoxData';
 export const PopulationVaccination = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isText, setIsText] = useState(false);
@@ -29,25 +29,25 @@ export const PopulationVaccination = () => {
   };
 
   const onXClick = () => {
-    inputRef.current.value = "";
+    inputRef.current.value = '';
     setIsText(false);
     filterSuggestions([]);
   };
   const getColorForDailyScore = (score) => {
     switch (true) {
       case score <= 4.5:
-        return "#b8de92";
+        return '#b8de92';
       //green
       case score <= 6:
-        return "#fcfc70";
+        return '#fcfc70';
       //yellow
       case score <= 7.5:
-        return "#f2c580";
+        return '#f2c580';
       //orange
-      case score === "אין מידע":
-        return "transparent";
+      case score === 'אין מידע':
+        return 'transparent';
       default:
-        return "#fa9e8f";
+        return '#fa9e8f';
       //red
     }
   };
@@ -225,25 +225,25 @@ export const PopulationVaccination = () => {
   return (
     <section className={styles.container}>
       <BigCard
-        title={"התחסנות לפי ישובים"}
+        title={'התחסנות לפי ישובים'}
         isFullWidth={true}
         info={vaxByLocationInfo}
       >
         <Sorter
-          placeholder={"כלל הישובים"}
+          placeholder={'כלל הישובים'}
           isOpen={isOpen}
-          openFnction={onSortClick}
+          openFunction={onSortClick}
         >
           <div className={styles.sorterChildrenContainer}>
             <div>
               <input
                 ref={inputRef}
-                type="text"
-                placeholder="חפש ישוב"
+                type='text'
+                placeholder='חפש ישוב'
                 onInput={onInput}
               />
               <span
-                className={`${styles.closeIcon} ${isText ? styles.show : ""}`}
+                className={`${styles.closeIcon} ${isText ? styles.show : ''}`}
                 onClick={onXClick}
               >
                 <IoIosCloseCircle />
@@ -269,12 +269,12 @@ export const PopulationVaccination = () => {
         </Sorter>
         <CoronaTable
           titles={[
-            "ישוב",
-            "% מתחסנים מנה ראשונה ",
-            "% מתחסנים מנה שנייה ",
-            "% מתחסנים מנה שלישית ",
-            "חולים פעילים לכל 10,000 נפש",
-            "ציון יומי מחושב",
+            'ישוב',
+            '% מתחסנים מנה ראשונה ',
+            '% מתחסנים מנה שנייה ',
+            '% מתחסנים מנה שלישית ',
+            'חולים פעילים לכל 10,000 נפש',
+            'ציון יומי מחושב',
           ]}
           sortFunction={sortLocations}
         >
@@ -287,62 +287,62 @@ export const PopulationVaccination = () => {
                   {row.vaxShot1 && row.vaxShot1 < 90 && (
                     <PercentBar
                       width={row.vaxShot1}
-                      backColor={"#bed8e9"}
-                      frontColor={"#1c7d7e"}
+                      backColor={'#bed8e9'}
+                      frontColor={'#1c7d7e'}
                     />
                   )}
                   <span>
                     {!row.vaxShot1
-                      ? "אין מידע"
+                      ? 'אין מידע'
                       : row.vaxShot1 < 90
-                      ? row.vaxShot1 + "%"
-                      : "מעל 90%"}
+                      ? row.vaxShot1 + '%'
+                      : 'מעל 90%'}
                   </span>
                 </div>
                 <div className={styles.percentContainer}>
                   {row.vaxShot2 && row.vaxShot2 < 90 && (
                     <PercentBar
                       width={row.vaxShot2}
-                      backColor={"#d5dbba"}
-                      frontColor={"#b6ca51"}
+                      backColor={'#d5dbba'}
+                      frontColor={'#b6ca51'}
                     />
                   )}
                   <span>
                     {!row.vaxShot2
-                      ? "אין מידע"
+                      ? 'אין מידע'
                       : row.vaxShot2 < 90
-                      ? row.vaxShot2 + "%"
-                      : "מעל 90%"}
+                      ? row.vaxShot2 + '%'
+                      : 'מעל 90%'}
                   </span>
                 </div>
                 <div className={styles.percentContainer}>
                   {row.vaxShot3 && row.vaxShot3 < 90 && (
                     <PercentBar
                       width={row.vaxShot3}
-                      backColor={"#cbdce7"}
-                      frontColor={"#50cbfd"}
+                      backColor={'#cbdce7'}
+                      frontColor={'#50cbfd'}
                     />
                   )}
                   <span>
                     {!row.vaxShot3
-                      ? "אין מידע"
+                      ? 'אין מידע'
                       : row.vaxShot3 < 90
-                      ? row.vaxShot3 + "%"
-                      : "מעל 90%"}
+                      ? row.vaxShot3 + '%'
+                      : 'מעל 90%'}
                   </span>
                 </div>
                 <div>
-                  {row.activeMorbidPer10K ? row.activeMorbidPer10K : "אין מידע"}
+                  {row.activeMorbidPer10K ? row.activeMorbidPer10K : 'אין מידע'}
                 </div>
                 <div>
                   <div
                     style={{
                       backgroundColor: getColorForDailyScore(
-                        row.dailyScore ? row.dailyScore : "אין מידע"
+                        row.dailyScore ? row.dailyScore : 'אין מידע'
                       ),
                     }}
                   >
-                    {row.dailyScore ? row.dailyScore : "אין מידע"}
+                    {row.dailyScore ? row.dailyScore : 'אין מידע'}
                   </div>
                 </div>
               </div>
