@@ -113,6 +113,323 @@ function _getRandomDecimal(min, max, decimalPlaces) {
   var power = Math.pow(10, decimalPlaces);
   return Math.floor(rand * power) / power;
 }
+
+const _getMockDataByDays_total = () => {
+  let mockData;
+  const months = [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "may",
+    "jun",
+    "jul",
+    "aug",
+    "sep",
+    "oct",
+    "nov",
+    "dec",
+  ];
+  mockData = { 2020: {}, 2021: {}, 2022: {} };
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 12; j++) {
+      mockData[2020] = {
+        ...mockData[2020],
+        [months[j]]: {
+          0: {
+            date: Date.parse("01 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          1: {
+            date: Date.parse("08 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          2: {
+            date: Date.parse("12 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          3: {
+            date: Date.parse("24 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+        },
+      };
+      mockData[2021] = {
+        ...mockData[2021],
+        [months[j]]: {
+          0: {
+            date: Date.parse("01 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          1: {
+            date: Date.parse("08 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          2: {
+            date: Date.parse("12 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          3: {
+            date: Date.parse("24 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+        },
+      };
+      mockData[2022] = {
+        ...mockData[2022],
+        [months[j]]: {
+          0: {
+            date: Date.parse("01 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          1: {
+            date: Date.parse("08 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          2: {
+            date: Date.parse("12 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+          3: {
+            date: Date.parse("24 feb 2020 07:20:00"),
+            morbid: {
+              light: _getRandomInt(1, 100),
+              medium: _getRandomInt(1, 100),
+              serious: {
+                total: _getRandomInt(1, 100),
+                critial: _getRandomInt(1, 50),
+                respirated: _getRandomInt(1, 50),
+              },
+              total: _getRandomInt(200, 300),
+            },
+            confirmed: {
+              total: _getRandomInt(1, 100),
+            },
+            active: {
+              unVaccinated: _getRandomInt(1, 100),
+              expiredVaccination: _getRandomInt(1, 100),
+              vaccinated: _getRandomInt(1, 100),
+              total: _getRandomInt(200, 300),
+            },
+            deceased: { total: _getRandomInt(1, 100) },
+          },
+        },
+      };
+    }
+  }
+  console.log(mockData);
+  return mockData;
+};
+// console.log("testing:", _getMockDataByDays_total());
 const getMockDataByDays_total = () => {
   //fist covid-19 case was 21/2/2020, so no january in 2020
   //this is probably how the "days" collection will look like
@@ -154,6 +471,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 feb 2020 07:20:00"),
@@ -167,6 +494,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 feb 2020 07:20:00"),
@@ -180,6 +517,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       mar: {
@@ -195,6 +542,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 mar 2020 07:20:00"),
@@ -208,6 +565,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 mar 2020 07:20:00"),
@@ -221,6 +588,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 mar 2020 07:20:00"),
@@ -234,6 +611,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       apr: {
@@ -249,6 +636,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 apr 2020 07:20:00"),
@@ -262,6 +659,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 apr 2020 07:20:00"),
@@ -275,6 +682,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 apr 2020 07:20:00"),
@@ -288,6 +705,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       may: {
@@ -303,6 +730,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 may 2020 07:20:00"),
@@ -316,6 +753,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 may 2020 07:20:00"),
@@ -329,6 +776,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 may 2020 07:20:00"),
@@ -342,6 +799,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jun: {
@@ -357,6 +824,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jun 2020 07:20:00"),
@@ -370,6 +847,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jun 2020 07:20:00"),
@@ -383,6 +870,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jun 2020 07:20:00"),
@@ -396,6 +893,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jul: {
@@ -411,6 +918,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jul 2020 07:20:00"),
@@ -424,6 +941,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jul 2020 07:20:00"),
@@ -437,6 +964,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jul 2020 07:20:00"),
@@ -450,6 +987,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       aug: {
@@ -465,6 +1012,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 aug 2020 07:20:00"),
@@ -478,6 +1035,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 aug 2020 07:20:00"),
@@ -491,6 +1058,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 aug 2020 07:20:00"),
@@ -504,6 +1081,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       sep: {
@@ -519,6 +1106,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 sep 2020 07:20:00"),
@@ -532,6 +1129,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 sep 2020 07:20:00"),
@@ -545,6 +1152,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 sep 2020 07:20:00"),
@@ -558,6 +1175,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       oct: {
@@ -573,6 +1200,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 oct 2020 07:20:00"),
@@ -586,6 +1223,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 oct 2020 07:20:00"),
@@ -599,6 +1246,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 oct 2020 07:20:00"),
@@ -612,6 +1269,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       nov: {
@@ -627,6 +1294,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 nov 2020 07:20:00"),
@@ -640,6 +1317,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 nov 2020 07:20:00"),
@@ -653,6 +1340,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 nov 2020 07:20:00"),
@@ -666,6 +1363,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       dec: {
@@ -681,6 +1388,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 dec 2020 07:20:00"),
@@ -694,6 +1411,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 dec 2020 07:20:00"),
@@ -707,6 +1434,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 dec 2020 07:20:00"),
@@ -720,6 +1457,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
     },
@@ -737,6 +1484,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jan 2021 07:20:00"),
@@ -750,6 +1507,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jan 2021 07:20:00"),
@@ -763,6 +1530,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jan 2021 07:20:00"),
@@ -776,6 +1553,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       feb: {
@@ -791,6 +1578,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 feb 2021 07:20:00"),
@@ -804,6 +1601,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 feb 2021 07:20:00"),
@@ -817,6 +1624,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 feb 2021 07:20:00"),
@@ -830,6 +1647,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       mar: {
@@ -845,6 +1672,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 mar 2021 07:20:00"),
@@ -858,6 +1695,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 mar 2021 07:20:00"),
@@ -871,6 +1718,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 mar 2021 07:20:00"),
@@ -884,6 +1741,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       apr: {
@@ -899,6 +1766,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 apr 2021 07:20:00"),
@@ -912,6 +1789,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 apr 2021 07:20:00"),
@@ -925,6 +1812,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 apr 2021 07:20:00"),
@@ -938,6 +1835,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       may: {
@@ -953,6 +1860,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 may 2021 07:20:00"),
@@ -966,6 +1883,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 may 2021 07:20:00"),
@@ -979,6 +1906,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 may 2021 07:20:00"),
@@ -992,6 +1929,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jun: {
@@ -1007,6 +1954,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jun 2021 07:20:00"),
@@ -1020,6 +1977,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jun 2021 07:20:00"),
@@ -1033,6 +2000,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jun 2021 07:20:00"),
@@ -1046,6 +2023,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jul: {
@@ -1061,6 +2048,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jul 2021 07:20:00"),
@@ -1074,6 +2071,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jul 2021 07:20:00"),
@@ -1087,6 +2094,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jul 2021 07:20:00"),
@@ -1100,6 +2117,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       aug: {
@@ -1115,6 +2142,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 aug 2021 07:20:00"),
@@ -1128,6 +2165,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 aug 2021 07:20:00"),
@@ -1141,6 +2188,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 aug 2021 07:20:00"),
@@ -1154,6 +2211,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       sep: {
@@ -1169,6 +2236,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 sep 2021 07:20:00"),
@@ -1182,6 +2259,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 sep 2021 07:20:00"),
@@ -1195,6 +2282,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 sep 2021 07:20:00"),
@@ -1208,6 +2305,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       oct: {
@@ -1223,6 +2330,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 oct 2021 07:20:00"),
@@ -1236,6 +2353,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 oct 2021 07:20:00"),
@@ -1249,6 +2376,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 oct 2021 07:20:00"),
@@ -1262,6 +2399,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       nov: {
@@ -1277,6 +2424,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 nov 2021 07:20:00"),
@@ -1290,6 +2447,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 nov 2021 07:20:00"),
@@ -1303,6 +2470,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 nov 2021 07:20:00"),
@@ -1316,6 +2493,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       dec: {
@@ -1331,6 +2518,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 dec 2021 07:20:00"),
@@ -1344,6 +2541,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 dec 2021 07:20:00"),
@@ -1357,6 +2564,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 dec 2021 07:20:00"),
@@ -1370,6 +2587,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
     },
@@ -1387,6 +2614,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jan 2022 07:20:00"),
@@ -1400,6 +2637,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jan 2022 07:20:00"),
@@ -1413,6 +2660,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jan 2022 07:20:00"),
@@ -1426,6 +2683,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       feb: {
@@ -1441,6 +2708,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 feb 2022 07:20:00"),
@@ -1454,6 +2731,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 feb 2022 07:20:00"),
@@ -1467,6 +2754,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 feb 2022 07:20:00"),
@@ -1480,6 +2777,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       mar: {
@@ -1495,6 +2802,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 mar 2022 07:20:00"),
@@ -1508,6 +2825,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 mar 2022 07:20:00"),
@@ -1521,6 +2848,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 mar 2022 07:20:00"),
@@ -1534,6 +2871,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       apr: {
@@ -1549,6 +2896,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 apr 2022 07:20:00"),
@@ -1562,6 +2919,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 apr 2022 07:20:00"),
@@ -1575,6 +2942,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 apr 2022 07:20:00"),
@@ -1588,6 +2965,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       may: {
@@ -1603,6 +2990,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 may 2022 07:20:00"),
@@ -1616,6 +3013,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 may 2022 07:20:00"),
@@ -1629,6 +3036,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 may 2022 07:20:00"),
@@ -1642,6 +3059,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jun: {
@@ -1657,6 +3084,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         1: {
           date: Date.parse("08 jun 2022 07:20:00"),
@@ -1670,6 +3107,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         2: {
           date: Date.parse("12 jun 2022 07:20:00"),
@@ -1683,6 +3130,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
         3: {
           date: Date.parse("24 jun 2022 07:20:00"),
@@ -1696,6 +3153,16 @@ const getMockDataByDays_total = () => {
             },
             total: _getRandomInt(200, 300),
           },
+          confirmed: {
+            total: _getRandomInt(1, 100),
+          },
+          active: {
+            unVaccinated: _getRandomInt(1, 100),
+            expiredVaccination: _getRandomInt(1, 100),
+            vaccinated: _getRandomInt(1, 100),
+            total: _getRandomInt(200, 300),
+          },
+          deceased: { total: _getRandomInt(1, 100) },
         },
       },
       jul: {},
