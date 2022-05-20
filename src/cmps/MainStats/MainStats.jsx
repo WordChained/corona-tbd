@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { BigCard } from "../../UI/BigCard";
-import styles from "./MainStats.module.css";
-import { useWindowSize } from "../../customHooks/useWindowSize";
+import React, { useEffect, useState } from 'react';
+import { BigCard } from '../../UI/BigCard';
+import styles from './MainStats.module.css';
+import { useWindowSize } from '../../customHooks/useWindowSize';
 
-import { numberOfHospitalizedInfo } from "../../views/infoBoxData";
-import { HospitalizedChart } from "../charts/HospitalizedChart";
-import { ConfirmedChart } from "../charts/ConfirmedChart";
+import {
+  newConfirmedInfo,
+  numberOfHospitalizedInfo,
+} from '../../views/infoBoxData';
+import { HospitalizedChart } from '../charts/HospitalizedChart';
+import { ConfirmedChart } from '../charts/ConfirmedChart';
 
 export const MainStats = ({ totalDaysData }) => {
   const [data, setData] = useState([]);
@@ -21,17 +24,23 @@ export const MainStats = ({ totalDaysData }) => {
 
   const morbidDataToArray = () => {
     const totalDays = [];
+    let confirmedCasesAccumulator = 0;
+    let avg = 0;
     for (const year in totalDaysData) {
       const years = totalDaysData[year];
       for (const month in years) {
         const months = totalDaysData[year][month];
         for (const day in months) {
+          confirmedCasesAccumulator += months[day].confirmed.total;
+
           totalDays.push({
             date: months[day].date,
             light: months[day].morbid.light,
             medium: months[day].morbid.medium,
             serious: months[day].morbid.serious.total,
             confirmed: months[day].confirmed.total,
+            totalConfirmedSoFar: confirmedCasesAccumulator,
+            confirmedAvg: avg,
           });
         }
       }
@@ -41,7 +50,7 @@ export const MainStats = ({ totalDaysData }) => {
 
   return (
     <section className={styles.container}>
-      <BigCard title={"מספר מאושפזים - יומי"} info={numberOfHospitalizedInfo}>
+      <BigCard title={'מספר מאושפזים - יומי'} info={numberOfHospitalizedInfo}>
         {!!data.length && (
           <HospitalizedChart
             totalDaysData={totalDaysData}
@@ -50,7 +59,7 @@ export const MainStats = ({ totalDaysData }) => {
           />
         )}
       </BigCard>
-      <BigCard title={"מאומתים חדשים - יומי"}>
+      <BigCard title={'מאומתים חדשים - יומי'} info={newConfirmedInfo}>
         {!!data.length && (
           <ConfirmedChart
             totalDaysData={totalDaysData}
