@@ -1,3 +1,5 @@
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.css';
 import { useState } from 'react';
 import './App.css';
 import { AppHeader } from './cmps/AppHeader/AppHeader';

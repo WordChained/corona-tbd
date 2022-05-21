@@ -30,7 +30,7 @@ const getLocationsData = async (limit = 100) => {
   return locations;
 };
 
-const getActiveMorbidPersonMockData = (num = 10000) => {
+const getPersonMockData = (num = 10000) => {
   const cases = []
   for (let i = 0; i < num; i++) {
     const isVaccinatedBolean = Math.random() > 0.5
@@ -38,26 +38,28 @@ const getActiveMorbidPersonMockData = (num = 10000) => {
       date: getRandomDate(Date.parse("01 feb 2020 07:20:00"), Date.parse("24 jun 2022 07:20:00")),
       age: _getRandomInt(1, 85),
       isVaccinated: isVaccinatedBolean,
+      sex: Math.random() > 0.5 ? 'male' : 'female',
     }
     if (isVaccinatedBolean) newPersonObject.isVaxExpired = Math.random() > 0.5
     cases.push(newPersonObject)
   }
   return cases
 }
-const getSeriouslyMorbidPersonMockData = (num = 10000) => {
-  const cases = []
-  for (let i = 0; i < num; i++) {
-    const isVaccinatedBolean = Math.random() > 0.5
-    const newPersonObject = {
-      date: getRandomDate(Date.parse("01 feb 2020 07:20:00"), Date.parse("24 jun 2022 07:20:00")),
-      age: _getRandomInt(1, 85),
-      isVaccinated: isVaccinatedBolean,
-    }
-    if (isVaccinatedBolean) newPersonObject.isVaxExpired = Math.random() > 0.5
-    cases.push(newPersonObject)
-  }
-  return cases
-}
+// const getSeriouslyMorbidPersonMockData = (num = 10000) => {
+//   const cases = []
+//   for (let i = 0; i < num; i++) {
+//     const isVaccinatedBolean = Math.random() > 0.5
+//     const newPersonObject = {
+//       date: getRandomDate(Date.parse("01 feb 2020 07:20:00"), Date.parse("24 jun 2022 07:20:00")),
+//       age: _getRandomInt(1, 85),
+//       isVaccinated: isVaccinatedBolean,
+//       sex: Math.random() > 0.5 ? 'male' : 'female'
+//     }
+//     if (isVaccinatedBolean) newPersonObject.isVaxExpired = Math.random() > 0.5
+//     cases.push(newPersonObject)
+//   }
+//   return cases
+// }
 
 const getMockData_daily = () => {
   return {
@@ -3239,6 +3241,5 @@ export const MOCK_DATA = {
   getMockData_weekly,
   getMockDataByDays_total,
   getLocationsData,
-  getActiveMorbidPersonMockData,
-  getSeriouslyMorbidPersonMockData
+  getPersonMockData
 };

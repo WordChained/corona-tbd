@@ -1,20 +1,8 @@
 import React from 'react';
 import styles from './CustomTooltip.module.css';
 export const CustomTooltip = (props) => {
-  const ageGroups = [
-    '5-11',
-    '12-15',
-    '16-19',
-    '20-29',
-    '30-39',
-    '40-49',
-    '50-59',
-    '60-69',
-    '70-79',
-    '80+',
-  ];
   const daysInLetters = ['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'];
-  if (!props.payload.length) return <div>אין נתונים</div>;
+  if (!props.payload?.length) return <div>אין נתונים</div>;
   return (
     <div className={styles.container}>
       {!props.isAgeGroups && (
@@ -31,7 +19,7 @@ export const CustomTooltip = (props) => {
       )}
       {props.isAgeGroups && (
         <div className={styles.label}>
-          <span>{ageGroups[props.label]}</span>
+          <span>{props.ageGroups[props.label]}</span>
         </div>
       )}
       {props.payload.map((pl, idx) => (

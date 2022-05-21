@@ -13,8 +13,6 @@ import { Sorter } from '../../UI/Sorter';
 import { CustomTooltip } from '../../UI/CustomTooltip';
 export const DeceasedChart = ({ data, chartSize }) => {
   const [timeframe, setTimeframe] = useState('1-month');
-  const [avg, setAvg] = useState(null);
-  const [total, setTotal] = useState(null);
 
   const [filteredData, setFilteredData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,20 +44,22 @@ export const DeceasedChart = ({ data, chartSize }) => {
     let filteredDataByTimeframe;
     let oneDayInMIlliseconds = 86400000;
     filteredDataByTimeframe = data.filter((item) => {
+      //if this was a real database id use : new Date().getTime() to get "now"
+      //but this is fake so...
+      const mockNowDate = Date.parse('12 may 2022 07:20:00');
       switch (timeframe) {
         case '1-month':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 30;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 30;
         case '3-months':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 90;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 90;
         case '6-months':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 180;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 180;
         case 'year':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 365;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 365;
         default:
           return true;
       }
     });
-
     //the following function calculates the avg of the past 7 days and adds it to the data
     //first days need a special calculation, since there arent 7 past days
     //so we calculate the days past by the idx, since its sorted by ascending dates
@@ -72,20 +72,21 @@ export const DeceasedChart = ({ data, chartSize }) => {
       let acc = 0;
       if (idx < 7) {
         for (let i = 0; i < idx; i++) {
-          acc += filteredDataByTimeframe[i].confirmed;
+          acc += filteredDataByTimeframe[i].deceased;
         }
-        if (idx === 0) item.confirmedAvg = filteredDataByTimeframe[0].confirmed;
-        else item.confirmedAvg = Math.round(acc / idx);
+        if (idx === 0) item.deceasedAvg = filteredDataByTimeframe[0].deceased;
+        else item.deceasedAvg = Math.round(acc / idx);
       } else {
         for (let i = 0; i < 7; i++) {
-          acc += filteredDataByTimeframe[idx - i].confirmed;
+          acc += filteredDataByTimeframe[idx - i].deceased;
         }
-        item.confirmedAvg = Math.round(acc / 7);
+        item.deceasedAvg = Math.round(acc / 7);
       }
       return item;
     });
     setFilteredData(dataWithAvgConfirmed);
   };
+
   const onFilterWindowToggle = (ev) => {
     console.log(ev.target.parentElement.parentElement);
     setIsOpen(!isOpen);
@@ -93,20 +94,17 @@ export const DeceasedChart = ({ data, chartSize }) => {
   const onFilterCancel = () => {
     setIsOpen(false);
   };
+
   useEffect(() => {
     let oneDayInMIlliseconds = 86400000;
     if (!filteredData.length) onFilterConfirm();
-    const totalConfirmed = data.reduce((acc, item) => {
-      acc += item.confirmed;
-      return acc;
-    }, 0);
-    setTotal(totalConfirmed);
   }, [filteredData, data]);
 
   const onRadioToggle = (ev) => {
     console.log(ev.target.value);
     setTimeframe(ev.target.value);
   };
+
   if (!data || !data.length) return <div>loader</div>;
   return (
     <div className={styles.container}>
@@ -188,20 +186,20 @@ export const DeceasedChart = ({ data, chartSize }) => {
         <div className={styles.legend}>
           <div>
             <span
-              style={{ backgroundColor: '#50cbfd' }}
+              style={{ backgroundColor: '#237d7d' }}
               className={styles.circle}
             ></span>
-            <span>מאומתים חדשים</span>
+            <span>נפטרים</span>
           </div>
           <div>
             <span
               style={{ backgroundColor: '#ff7d67' }}
               className={styles.circle}
             ></span>
-            <span>ממוצע נע מאומתים</span>
+            <span>ממוצע נע נפטרים</span>
           </div>
         </div>
-        <span className={styles.yHeader}>מאומתים חדשים</span>
+        <span className={styles.yHeader}>מספר נפטרים</span>
       </div>
       <div className={styles.chartContainer}>
         <ComposedChart
@@ -238,19 +236,18 @@ export const DeceasedChart = ({ data, chartSize }) => {
             tick={{ stroke: 'black', strokeWidth: 0.1 }}
           />
           <Tooltip
-            info={['מאומתים', 'ממוצע נע מאומתים', 'מאומתים מצטבר']}
-            colors={['#50cbfd', '#ff7d67']}
-            totalConfirmed={total}
+            info={['נפטרים', 'ממוצע נע נפטרים']}
+            colors={['#237d7d', '#ff7d67']}
             content={<CustomTooltip />}
           />
           <CartesianGrid vertical={false} />
-          <Bar dataKey='confirmed' barSize={20} fill='#50cbfd' />
+          <Bar dataKey='deceased' barSize={10} fill='#237d7d' />
           <Line
-            type='monotone'
-            dataKey='confirmedAvg'
+            type='linear'
+            dataKey='deceasedAvg'
             stroke='#ff7d67'
             strokeWidth={2}
-            dot={{ fill: '#ff7d67', stroke: 'white', r: 4, strokeWidth: 1 }}
+            dot={{ fill: '#ff7d67', stroke: 'white', r: 4, strokeWidth: 1.5 }}
           />
         </ComposedChart>
       </div>

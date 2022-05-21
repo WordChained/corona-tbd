@@ -53,15 +53,16 @@ export const HospitalizedChart = ({ data, chartSize }) => {
     let filteredDataByTimeframe;
     let oneDayInMIlliseconds = 86400000;
     filteredDataByTimeframe = data.filter((item) => {
+      const mockNowDate = Date.parse('12 may 2022 07:20:00');
       switch (timeframe) {
         case '1-month':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 30;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 30;
         case '3-months':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 90;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 90;
         case '6-months':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 180;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 180;
         case 'year':
-          return item.date > new Date().getTime() - oneDayInMIlliseconds * 365;
+          return item.date > mockNowDate - oneDayInMIlliseconds * 365;
         default:
           return true;
       }

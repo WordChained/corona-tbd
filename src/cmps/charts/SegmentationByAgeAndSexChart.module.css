@@ -3,10 +3,12 @@
   flex-wrap: wrap;
   gap: 10px;
   font-style: 0.8rem;
+  /* position: absolute; */
+  /* height: 200px; */
 }
 .chartContainer {
   direction: ltr;
-  /* margin-top: 25px; */
+  margin-top: 25px;
 }
 .legend {
   position: absolute;
@@ -25,11 +27,19 @@
 }
 .yHeader {
   position: absolute;
-  left: 20px;
+  left: 29px;
   width: min-content;
   text-align: start;
   font-size: 0.9rem;
   top: 90px;
+}
+.xHeader {
+  position: absolute;
+  left: 50%;
+  width: max-content;
+  text-align: start;
+  font-size: 0.9rem;
+  bottom: 7px;
 }
 
 .labels {
@@ -61,14 +71,17 @@
 .innerList h4 {
   margin-bottom: 10px;
   margin-top: 10px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+}
+.innerList h4:nth-of-type(2) {
+  margin-top: 25px;
 }
 
 .innerList label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 .radioBtns {
   display: flex;

@@ -11,14 +11,16 @@ export const VaxOnMorbidity = () => {
   const [seriouslyIllData, setSeriouslyIllData] = useState([]);
   const windowSize = useWindowSize();
   const [chartSize, setChartSize] = useState(0);
+
   useEffect(() => {
-    if (!data.length) setData(MOCK_DATA.getActiveMorbidPersonMockData(50000));
+    if (!data.length) setData(MOCK_DATA.getPersonMockData(50000));
     if (!seriouslyIllData.length)
-      setSeriouslyIllData(MOCK_DATA.getSeriouslyMorbidPersonMockData(50000));
+      setSeriouslyIllData(MOCK_DATA.getPersonMockData(50000));
     if (windowSize.width > 980) setChartSize(590);
     else if (windowSize.width < 750) setChartSize(windowSize.width - 40);
     else setChartSize(340);
   }, [windowSize.width]);
+
   return (
     <section className={styles.container}>
       {/* <BigCard title={'מאומתים יומי - התחסנות'}></BigCard>

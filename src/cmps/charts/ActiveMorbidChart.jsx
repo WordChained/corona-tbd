@@ -63,7 +63,7 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
       // const ageGroups = {vaccinated: 0, notVaccinated: 0, vaxExpired : 0};
       let indexOfGroup = 0;
       switch (true) {
-        case item.age < 4:
+        case item.age < 11:
           indexOfGroup = 0;
           break;
         case item.age > 11 && item.age < 16:
@@ -284,6 +284,7 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
             info={['לא מחוסנים', 'מחוסנים ללא תוקף', 'מחוסנים']}
             colors={['#50cbfd', '#b6ca51', '#237d7d']}
             isAgeGroups={true}
+            ageGroups={xAxisTickInfo}
             content={<CustomTooltip />}
           />
           <Bar dataKey='notVaccinated' fill='#50cbfd' />

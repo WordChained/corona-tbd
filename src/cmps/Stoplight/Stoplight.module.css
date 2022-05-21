@@ -119,6 +119,7 @@
 .leftBox {
   position: relative;
 }
+
 @media (min-width: 800px) {
   .upperPart {
     flex-direction: column;
