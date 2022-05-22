@@ -55,10 +55,12 @@
   overflow-y: hidden;
   /* box-shadow: rgb(36, 35, 35) 0px 3px 10px; */
 }
+
 .navbar::-webkit-scrollbar,
 .navbar2::-webkit-scrollbar {
   display: none;
 }
+
 @media (min-width: 800px) {
   .navbar::-webkit-scrollbar,
   .navbar2::-webkit-scrollbar {
@@ -70,8 +72,13 @@
     background-color: #969696;
     border-radius: 3em;
   }
+  .navbar2 {
+    display: none;
+  }
 }
+
 .navbar2 {
+  display: none;
   position: fixed;
   top: -100px;
   right: -0.5px;
@@ -84,6 +91,7 @@
   /* box-shadow: rgb(36, 35, 35) 0px 3px 10px; */
 }
 .navbar2.show {
+  display: block;
   top: 0;
   transition: top 0.3s linear;
   z-index: 10;
