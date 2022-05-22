@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Deceased.module.css';
-import { BigCard } from '../../UI/BigCard';
-import { deceasedChartInfo } from '../../views/infoBoxData';
-import { DeceasedChart } from '../charts/DeceasedChart';
-import { useWindowSize } from '../../customHooks/useWindowSize';
+import React, { useEffect, useState } from "react";
+import styles from "./Deceased.module.css";
+import { BigCard } from "../../UI/BigCard";
+import { deceasedChartInfo } from "../../views/infoBoxData";
+import { DeceasedChart } from "../charts/DeceasedChart";
+import { useWindowSize } from "../../customHooks/useWindowSize";
 
 export const Deceased = ({ totalDaysData }) => {
   const [data, setData] = useState([]);
@@ -14,9 +14,9 @@ export const Deceased = ({ totalDaysData }) => {
 
   useEffect(() => {
     if (!data.length) deceasedDataToArray();
-    if (windowSize.width > 980) setChartSize(590);
+    if (windowSize.width > 750) setChartSize(590);
     else if (windowSize.width < 750) setChartSize(windowSize.width - 40);
-    else setChartSize(340);
+    // else setChartSize(590);
   }, [windowSize.width]);
 
   const deceasedDataToArray = () => {
@@ -42,7 +42,7 @@ export const Deceased = ({ totalDaysData }) => {
   };
   return (
     <section className={styles.container}>
-      <BigCard title={'נפטרים - יומי'} info={deceasedChartInfo}>
+      <BigCard title={"נפטרים - יומי"} info={deceasedChartInfo}>
         {!!data.length && <DeceasedChart data={data} chartSize={chartSize} />}
       </BigCard>
     </section>

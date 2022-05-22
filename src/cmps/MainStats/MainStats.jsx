@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { BigCard } from '../../UI/BigCard';
-import styles from './MainStats.module.css';
-import { useWindowSize } from '../../customHooks/useWindowSize';
+import React, { useEffect, useState } from "react";
+import { BigCard } from "../../UI/BigCard";
+import styles from "./MainStats.module.css";
+import { useWindowSize } from "../../customHooks/useWindowSize";
 
 import {
   newConfirmedInfo,
   numberOfHospitalizedInfo,
-} from '../../views/infoBoxData';
-import { HospitalizedChart } from '../charts/HospitalizedChart';
-import { ConfirmedChart } from '../charts/ConfirmedChart';
+} from "../../views/infoBoxData";
+import { HospitalizedChart } from "../charts/HospitalizedChart";
+import { ConfirmedChart } from "../charts/ConfirmedChart";
 
 export const MainStats = ({ totalDaysData }) => {
   const [data, setData] = useState([]);
@@ -17,9 +17,10 @@ export const MainStats = ({ totalDaysData }) => {
 
   useEffect(() => {
     if (!data.length) morbidDataToArray();
-    if (windowSize.width > 980) setChartSize(590);
-    else if (windowSize.width < 750) setChartSize(windowSize.width - 40);
-    else setChartSize(340);
+    if (windowSize.width > 750 && windowSize.width <= 980) setChartSize(350);
+    if (windowSize.width > 980 && windowSize.width <= 1249) setChartSize(500);
+    else if (windowSize.width <= 750) setChartSize(windowSize.width - 40);
+    else if (windowSize.width > 1249) setChartSize(590);
   }, [windowSize.width]);
 
   const morbidDataToArray = () => {
@@ -50,7 +51,7 @@ export const MainStats = ({ totalDaysData }) => {
 
   return (
     <section className={styles.container}>
-      <BigCard title={'מספר מאושפזים - יומי'} info={numberOfHospitalizedInfo}>
+      <BigCard title={"מספר מאושפזים - יומי"} info={numberOfHospitalizedInfo}>
         {!!data.length && (
           <HospitalizedChart
             totalDaysData={totalDaysData}
@@ -59,7 +60,7 @@ export const MainStats = ({ totalDaysData }) => {
           />
         )}
       </BigCard>
-      <BigCard title={'מאומתים חדשים - יומי'} info={newConfirmedInfo}>
+      <BigCard title={"מאומתים חדשים - יומי"} info={newConfirmedInfo}>
         {!!data.length && (
           <ConfirmedChart
             totalDaysData={totalDaysData}

@@ -50,7 +50,10 @@
   top: 5px;
   left: 5px;
 }
-
+/* .card.bigger {
+  width: 60vw;
+  max-width: unset;
+} */
 .infoBox {
   background-color: white;
   box-shadow: 0 0 10px 1px rgba(159, 155, 155, 0.479);

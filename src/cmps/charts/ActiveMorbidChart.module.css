@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   gap: 10px;
   font-style: 0.8rem;
+  flex-direction: column;
 }
 .chartContainer {
   direction: ltr;
@@ -89,7 +90,7 @@
 }
 
 @media (min-width: 750px) {
-  .container {
+  .container.noWrap {
     flex-wrap: nowrap;
   }
 }

@@ -1,48 +1,51 @@
-import React, { useEffect, useState } from 'react';
-import styles from './ActiveMorbidChart.module.css';
-import { XAxis, YAxis, CartesianGrid, Tooltip, Bar, BarChart } from 'recharts';
-import { Sorter } from '../../UI/Sorter';
-import { CustomTooltip } from '../../UI/CustomTooltip';
+import React, { useEffect, useState } from "react";
+import styles from "./ActiveMorbidChart.module.css";
+import { XAxis, YAxis, CartesianGrid, Tooltip, Bar, BarChart } from "recharts";
+import { Sorter } from "../../UI/Sorter";
+import { CustomTooltip } from "../../UI/CustomTooltip";
+import { useWindowSize } from "../../customHooks/useWindowSize";
+
 export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
   const xAxisTickInfo = [
-    '5-11',
-    '12-15',
-    '16-19',
-    '20-29',
-    '30-39',
-    '40-49',
-    '50-59',
-    '60-69',
-    '70-79',
-    '+80',
+    "5-11",
+    "12-15",
+    "16-19",
+    "20-29",
+    "30-39",
+    "40-49",
+    "50-59",
+    "60-69",
+    "70-79",
+    "+80",
   ];
-  const [typeOfCases, setTypeOfCases] = useState('active');
-  const [typeOfAnalysis, setTypeOfAnalysis] = useState('per100k');
+  const [typeOfCases, setTypeOfCases] = useState("active");
+  const [typeOfAnalysis, setTypeOfAnalysis] = useState("per100k");
   const [isPer100K, setIsPer100K] = useState(true);
+  const windowSize = useWindowSize();
   // const [total, setTotal] = useState(null);
 
   const [filteredData, setFilteredData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [placeholder, setPlaceholder] = useState(
-    'חולים פעילים, ל-100 אלף תושבים'
+    "חולים פעילים, ל-100 אלף תושבים"
   );
 
   const onFilterConfirm = () => {
-    let newPlaceholder = '';
+    let newPlaceholder = "";
     switch (typeOfCases) {
-      case 'active':
-        newPlaceholder += 'חולים פעילים, ';
+      case "active":
+        newPlaceholder += "חולים פעילים, ";
         break;
       default:
-        newPlaceholder += 'חולים קשה, ';
+        newPlaceholder += "חולים קשה, ";
         break;
     }
     switch (typeOfAnalysis) {
-      case 'per100k':
-        newPlaceholder += 'ל-100 אלף תושבים';
+      case "per100k":
+        newPlaceholder += "ל-100 אלף תושבים";
         break;
       default:
-        newPlaceholder += 'מספר מוחלט';
+        newPlaceholder += "מספר מוחלט";
         break;
     }
     setPlaceholder(newPlaceholder);
@@ -57,7 +60,7 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
       });
     }
     let dataToUse;
-    dataToUse = typeOfCases === 'active' ? data : seriouslyIllData;
+    dataToUse = typeOfCases === "active" ? data : seriouslyIllData;
     dataToUse.forEach((item) => {
       //need to create array of object of people
       // const ageGroups = {vaccinated: 0, notVaccinated: 0, vaxExpired : 0};
@@ -145,14 +148,14 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
   const onRadioToggle2 = (ev) => {
     // console.log(ev.target.value);
     setTypeOfAnalysis(ev.target.value);
-    if (ev.target.value === 'per100k') setIsPer100K(true);
-    else if (ev.target.value === 'abs') setIsPer100K(false);
+    if (ev.target.value === "per100k") setIsPer100K(true);
+    else if (ev.target.value === "abs") setIsPer100K(false);
   };
   if (!data || !data.length) return <div>loader</div>;
   return (
     <div className={styles.container}>
       <div>
-        <div style={{ marginTop: '20px' }}>
+        <div style={{ marginTop: "20px" }}>
           <Sorter
             isOpen={isOpen}
             openFunction={onFilterWindowToggle}
@@ -164,23 +167,23 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
                 <div className={styles.radioBtns}>
                   <label>
                     <input
-                      type='radio'
-                      name='active'
-                      id=''
-                      checked={typeOfCases === 'active'}
+                      type="radio"
+                      name="active"
+                      id=""
+                      checked={typeOfCases === "active"}
                       onChange={onRadioToggle}
-                      value='active'
+                      value="active"
                     />
                     <span>חולים פעילים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='active'
-                      id=''
-                      checked={typeOfCases === 'serious'}
+                      type="radio"
+                      name="active"
+                      id=""
+                      checked={typeOfCases === "serious"}
                       onChange={onRadioToggle}
-                      value='serious'
+                      value="serious"
                     />
                     <span>חולים קשה</span>
                   </label>
@@ -189,23 +192,23 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
                 <div className={styles.radioBtns}>
                   <label>
                     <input
-                      type='radio'
-                      name='type'
-                      id=''
-                      checked={typeOfAnalysis === 'abs'}
+                      type="radio"
+                      name="type"
+                      id=""
+                      checked={typeOfAnalysis === "abs"}
                       onChange={onRadioToggle2}
-                      value='abs'
+                      value="abs"
                     />
                     <span>מספר מוחלט</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='type'
-                      id=''
-                      checked={typeOfAnalysis === 'per100k'}
+                      type="radio"
+                      name="type"
+                      id=""
+                      checked={typeOfAnalysis === "per100k"}
                       onChange={onRadioToggle2}
-                      value='per100k'
+                      value="per100k"
                     />
                     <span>ל-100 אלף תושבים</span>
                   </label>
@@ -221,21 +224,21 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
         <div className={styles.legend}>
           <div>
             <span
-              style={{ backgroundColor: '#50cbfd' }}
+              style={{ backgroundColor: "#50cbfd" }}
               className={styles.circle}
             ></span>
             <span>לא מחוסנים</span>
           </div>
           <div>
             <span
-              style={{ backgroundColor: '#b6ca51' }}
+              style={{ backgroundColor: "#b6ca51" }}
               className={styles.circle}
             ></span>
             <span>מחוסנים ללא תוקף</span>
           </div>
           <div>
             <span
-              style={{ backgroundColor: '#237d7d' }}
+              style={{ backgroundColor: "#237d7d" }}
               className={styles.circle}
             ></span>
             <span>מחוסנים</span>
@@ -266,30 +269,30 @@ export const ActiveMorbidChart = ({ data, chartSize, seriouslyIllData }) => {
               return xAxisTickInfo[idx];
             }}
             angle={-45}
-            fontSize={'0.75rem'}
+            fontSize={"0.75rem"}
             tickMargin={10}
             tickSize={12}
             tickLine={{ strokeWidth: 0.2 }}
-            axisLine={{ stroke: '#cccccc' }}
+            axisLine={{ stroke: "#cccccc" }}
             tickCount={10}
           />
           <YAxis
-            fontSize={'0.75rem'}
+            fontSize={"0.75rem"}
             axisLine={false}
             tickLine={false}
             tickMargin={10}
-            tick={{ stroke: 'black', strokeWidth: 0.1 }}
+            tick={{ stroke: "black", strokeWidth: 0.1 }}
           />
           <Tooltip
-            info={['לא מחוסנים', 'מחוסנים ללא תוקף', 'מחוסנים']}
-            colors={['#50cbfd', '#b6ca51', '#237d7d']}
+            info={["לא מחוסנים", "מחוסנים ללא תוקף", "מחוסנים"]}
+            colors={["#50cbfd", "#b6ca51", "#237d7d"]}
             isAgeGroups={true}
             ageGroups={xAxisTickInfo}
             content={<CustomTooltip />}
           />
-          <Bar dataKey='notVaccinated' fill='#50cbfd' />
-          <Bar dataKey='vaxExpired' fill='#b6ca51' />
-          <Bar dataKey='vaccinated' fill='#237d7d' />
+          <Bar dataKey="notVaccinated" fill="#50cbfd" />
+          <Bar dataKey="vaxExpired" fill="#b6ca51" />
+          <Bar dataKey="vaccinated" fill="#237d7d" />
         </BarChart>
       </div>
     </div>

@@ -1,5 +1,9 @@
 import axios from "axios";
-import { getRandomDate, _getRandomDecimal, _getRandomInt } from "./services/utilService";
+import {
+  getRandomDate,
+  _getRandomDecimal,
+  _getRandomInt,
+} from "./services/utilService";
 
 const getLocationsData = async (limit = 100) => {
   const locations = [];
@@ -31,20 +35,23 @@ const getLocationsData = async (limit = 100) => {
 };
 
 const getPersonMockData = (num = 10000) => {
-  const cases = []
+  const cases = [];
   for (let i = 0; i < num; i++) {
-    const isVaccinatedBolean = Math.random() > 0.5
+    const isVaccinatedBolean = Math.random() > 0.5;
     const newPersonObject = {
-      date: getRandomDate(Date.parse("01 feb 2020 07:20:00"), Date.parse("24 jun 2022 07:20:00")),
-      age: _getRandomInt(1, 85),
+      date: getRandomDate(
+        Date.parse("21 feb 2020 07:20:00"),
+        Date.parse("24 jun 2022 07:20:00")
+      ),
+      age: _getRandomInt(1, 95),
       isVaccinated: isVaccinatedBolean,
-      sex: Math.random() > 0.5 ? 'male' : 'female',
-    }
-    if (isVaccinatedBolean) newPersonObject.isVaxExpired = Math.random() > 0.5
-    cases.push(newPersonObject)
+      sex: Math.random() > 0.5 ? "male" : "female",
+    };
+    if (isVaccinatedBolean) newPersonObject.isVaxExpired = Math.random() > 0.5;
+    cases.push(newPersonObject);
   }
-  return cases
-}
+  return cases;
+};
 // const getSeriouslyMorbidPersonMockData = (num = 10000) => {
 //   const cases = []
 //   for (let i = 0; i < num; i++) {
@@ -3226,20 +3233,19 @@ const getMockDataByDays_total = () => {
   };
 };
 
-
 const _getRandomPerson = async () => {
   try {
-    const user = await axios.get('https://randomuser.me/api/')
-    return user.data.results[0]
+    const user = await axios.get("https://randomuser.me/api/");
+    return user.data.results[0];
   } catch (error) {
-    console.log('getRandomPerson Error: ', error)
+    console.log("getRandomPerson Error: ", error);
   }
-}
+};
 
 export const MOCK_DATA = {
   getMockData_daily,
   getMockData_weekly,
   getMockDataByDays_total,
   getLocationsData,
-  getPersonMockData
+  getPersonMockData,
 };

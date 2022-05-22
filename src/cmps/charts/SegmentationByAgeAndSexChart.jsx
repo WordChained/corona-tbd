@@ -1,35 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import styles from './SegmentationByAgeAndSexChart.module.css';
-import EChartsReact from 'echarts-for-react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
-// import Chart, {
-//   CommonSeriesSettings,
-//   ValueAxis,
-//   Label,
-//   Series,
-//   Tooltip,
-//   Legend,
-// } from 'devextreme-react/chart';
-import { Sorter } from '../../UI/Sorter';
-import { CustomTooltip } from '../../UI/CustomTooltip';
-import { CustomLabel } from '../../UI/CustomLabel';
-export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
-  const xAxisTickInfo = [
-    '0-9',
-    '10-19',
-    '20-29',
-    '30-39',
-    '40-49',
-    '50-59',
-    '60-69',
-    '70-79',
-    '80-89',
-    '+90',
-  ];
-  const yAxisArray = ['30', '20', '10', '0', '10', '20', '30'];
+import React, { useEffect, useState } from "react";
+import styles from "./SegmentationByAgeAndSexChart.module.css";
+import EChartsReact from "echarts-for-react";
+import { Sorter } from "../../UI/Sorter";
 
-  const [timeframe, setTimeframe] = useState('1-month');
-  const [typeOfCases, setTypeOfCases] = useState('confirmed');
+export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
+  const ageGroupStaticStringArray = [
+    "0-9",
+    "10-19",
+    "20-29",
+    "30-39",
+    "40-49",
+    "50-59",
+    "60-69",
+    "70-79",
+    "80-89",
+    "+90",
+  ];
+  // const bottomAxisStaticArray = ["30", "20", "10", "0", "10", "20", "30"];
+
+  const [timeframe, setTimeframe] = useState("1-month");
+  const [typeOfCases, setTypeOfCases] = useState("confirmed");
   const [menData, setMenData] = useState([]);
   const [womenData, setWomenData] = useState([]);
   // const [total, setTotal] = useState(null);
@@ -38,45 +28,45 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [placeholder, setPlaceholder] = useState(
-    'חולים פעילים, ל-100 אלף תושבים'
+    "חולים פעילים, ל-100 אלף תושבים"
   );
 
   const onFilterConfirm = () => {
-    let newPlaceholder = '';
+    let newPlaceholder = "";
     let dataToProcess;
     switch (typeOfCases) {
-      case 'confirmed':
-        newPlaceholder += 'מאומתים, ';
+      case "confirmed":
+        newPlaceholder += "מאומתים, ";
         dataToProcess = data.confirmed;
         break;
-      case 'deceased':
-        newPlaceholder += 'נפטרים, ';
+      case "deceased":
+        newPlaceholder += "נפטרים, ";
         dataToProcess = data.deceased;
         break;
-      case 'respirated':
-        newPlaceholder += 'מונשמים, ';
+      case "respirated":
+        newPlaceholder += "מונשמים, ";
         dataToProcess = data.respirated;
         break;
       default:
-        newPlaceholder += 'מצב קשה, ';
+        newPlaceholder += "מצב קשה, ";
         dataToProcess = data.seriouslyMorbid;
         break;
     }
     switch (timeframe) {
-      case '1-month':
-        newPlaceholder += 'חודש אחרון';
+      case "1-month":
+        newPlaceholder += "חודש אחרון";
         break;
-      case '3-months':
-        newPlaceholder += '3 חודשים';
+      case "3-months":
+        newPlaceholder += "3 חודשים";
         break;
-      case '6-months':
-        newPlaceholder += '6 חודשים';
+      case "6-months":
+        newPlaceholder += "6 חודשים";
         break;
-      case 'year':
-        newPlaceholder += 'שנה';
+      case "year":
+        newPlaceholder += "שנה";
         break;
-      case 'all':
-        newPlaceholder += 'עד עכשיו';
+      case "all":
+        newPlaceholder += "עד עכשיו";
         break;
       default:
         break;
@@ -91,6 +81,25 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
         women: 0,
       });
     }
+    dataToProcess = dataToProcess.filter((item) => {
+      //if this was a real database id use : new Date().getTime() to get "now"
+      //but this is fake so...
+      const mockNowDate = Date.parse("12 may 2022 07:20:00");
+      const oneDayInMIlliseconds = 86400000;
+      switch (timeframe) {
+        case "1-month":
+          return item.date > mockNowDate - oneDayInMIlliseconds * 30;
+        case "3-months":
+          return item.date > mockNowDate - oneDayInMIlliseconds * 90;
+        case "6-months":
+          return item.date > mockNowDate - oneDayInMIlliseconds * 180;
+        case "year":
+          return item.date > mockNowDate - oneDayInMIlliseconds * 365;
+        default:
+          return true;
+      }
+    });
+
     dataToProcess.forEach((item) => {
       //need to create array of object of people
       // const ageGroups = {vaccinated: 0, notVaccinated: 0, vaxExpired : 0};
@@ -98,62 +107,62 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
       switch (true) {
         case item.age > 0 && item.age < 10:
           indexOfGroup = 0;
-          ageGroups[0].range = '0-9';
+          ageGroups[0].range = "0-9";
           break;
         case item.age > 9 && item.age < 20:
           indexOfGroup = 1;
-          ageGroups[1].range = '10-19';
+          ageGroups[1].range = "10-19";
           break;
         case item.age > 19 && item.age < 30:
           indexOfGroup = 2;
-          ageGroups[2].range = '20-29';
+          ageGroups[2].range = "20-29";
           break;
         case item.age > 29 && item.age < 40:
           indexOfGroup = 3;
-          ageGroups[3].range = '30-39';
+          ageGroups[3].range = "30-39";
           break;
         case item.age > 39 && item.age < 50:
           indexOfGroup = 4;
-          ageGroups[4].range = '40-49';
+          ageGroups[4].range = "40-49";
           break;
         case item.age > 49 && item.age < 60:
           indexOfGroup = 5;
-          ageGroups[5].range = '50-59';
+          ageGroups[5].range = "50-59";
           break;
         case item.age > 59 && item.age < 70:
           indexOfGroup = 6;
-          ageGroups[6].range = '60-69';
+          ageGroups[6].range = "60-69";
           break;
         case item.age > 69 && item.age < 80:
           indexOfGroup = 7;
-          ageGroups[7].range = '70-79';
+          ageGroups[7].range = "70-79";
           break;
         case item.age > 79 && item.age <= 90:
           indexOfGroup = 8;
-          ageGroups[8].range = '80-89';
+          ageGroups[8].range = "80-89";
           break;
         case item.age > 90:
-          indexOfGroup = 8;
-          ageGroups[9].range = '+90';
+          indexOfGroup = 9;
+          ageGroups[9].range = "+90";
           break;
       }
-      if (item.sex === 'male') ageGroups[indexOfGroup].men++;
+      if (item.sex === "male") ageGroups[indexOfGroup].men++;
       else ageGroups[indexOfGroup].women--;
       const totalCasesInType = dataToProcess.length / 2;
       ageGroups[indexOfGroup].men_percent = +(
         (ageGroups[indexOfGroup].men / totalCasesInType) *
         100
-      ).toFixed(2);
+      ).toFixed(1);
       ageGroups[indexOfGroup].women_percent = +(
         (ageGroups[indexOfGroup].women / totalCasesInType) *
         100
-      ).toFixed(2);
+      ).toFixed(1);
     });
     console.log(ageGroups);
     setFilteredData(ageGroups);
 
-    setMenData(dataToProcess.map((item) => item.men));
-    setWomenData(dataToProcess.map((item) => item.women));
+    setMenData(ageGroups.map((item) => item.men_percent));
+    setWomenData(ageGroups.map((item) => item.women_percent));
   };
 
   const onFilterWindowToggle = (ev) => {
@@ -168,7 +177,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
   }, [filteredData, data]);
 
   const onRadioToggle = (ev) => {
-    // console.log(ev.target.value);
+    console.log(ev.target.value);
     setTypeOfCases(ev.target.value);
   };
   const onRadioToggle2 = (ev) => {
@@ -178,55 +187,121 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
 
   const option = {
     tooltip: {
-      trigger: 'axis',
+      dataSet: filteredData,
+      trigger: "axis",
       axisPointer: {
-        type: 'shadow',
+        lineStyle: { type: "solid", color: "#a6abb6" },
+      },
+      // direction: "rtl",
+      formatter: (params) => {
+        const currentAgeGroup = filteredData.find((item) => {
+          return item.range === params[0].axisValue;
+        });
+
+        params[0].seriesName = "גברים";
+        params[1].seriesName = "נשים";
+        return `
+          <div class=${styles.customTooltip}>
+            <span class=${styles.bold}>${params[0].axisValue}</span>
+            <div class=${styles.row}>
+            <div style='background-color: #50cbfd' class=${styles.circle}></div>
+            <span> <span class=${styles.bold}>${Math.abs(
+          params[0].value
+        )}%</span> <span/>  <span>${params[0].seriesName}</span>
+        (${currentAgeGroup.men.toLocaleString()})
+        </div>
+        <div class=${styles.row}>
+            <div style="background-color: #b6ca51" class=${styles.circle}></div>
+             <span> <span class=${styles.bold}>${Math.abs(
+          params[1].value
+        )}% </span> <span/> <span>${params[1].seriesName}</span>
+        (${Math.abs(currentAgeGroup.women).toLocaleString()})
+        </div>
+          </div>
+            `;
+        // return `${(<CustomTooltip />)}`;
       },
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
+      left: "6%",
+      right: "4%",
+      bottom: "18%",
+      top: "0%",
       containLabel: true,
+      show: true,
     },
     xAxis: [
       {
-        type: 'value',
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#e5e5e5",
+          },
+        },
+        type: "value",
+        // data: bottomAxisStaticArray,
+        // interval: 10,
+        min: -30,
+        max: 30,
+        axisTick: { alignWithLabel: true },
+        axisLabel: {
+          formatter: (val) => {
+            return Math.abs(val);
+          },
+        },
       },
     ],
     yAxis: [
       {
-        type: 'category',
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: "#e5e5e5",
+          },
+        },
+        type: "category",
         axisTick: {
           show: false,
         },
-        data: xAxisTickInfo,
+        axisLine: {
+          show: false,
+        },
+        data: ageGroupStaticStringArray,
       },
     ],
     series: [
       {
-        name: 'men',
-        type: 'bar',
-        stack: 'Total',
+        // silent: true,
+        name: "Men",
+        type: "bar",
+        stack: "Total",
+        color: "#50cbfd",
+        cursor: "pointer",
         label: {
           show: true,
+          position: "right",
+          formatter: (value) => {
+            return value.data + "%";
+          },
         },
-        emphasis: {
-          focus: 'series',
-        },
+        emphasis: {},
         data: menData,
       },
       {
-        name: 'women',
-        type: 'bar',
-        stack: 'Total',
+        // silent: true,
+        name: "Women",
+        type: "bar",
+        color: "#b6ca51",
+        stack: "Total",
+        barWidth: 8,
         label: {
           show: true,
-          position: 'left',
+          position: "left",
+          formatter: (value) => {
+            return -value.data + "%";
+          },
         },
-        emphasis: {
-          focus: 'series',
-        },
+        emphasis: {},
         data: womenData,
       },
     ],
@@ -235,7 +310,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
   return (
     <div className={styles.container}>
       <div>
-        <div style={{ marginTop: '20px' }}>
+        <div style={{ marginTop: "20px" }}>
           <Sorter
             isOpen={isOpen}
             openFunction={onFilterWindowToggle}
@@ -247,45 +322,45 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
                 <div className={styles.radioBtns}>
                   <label>
                     <input
-                      type='type'
-                      name='active'
-                      id=''
-                      checked={typeOfCases === 'confirmed'}
+                      type="radio"
+                      name="typeOfCase"
+                      id=""
+                      checked={typeOfCases === "confirmed"}
                       onChange={onRadioToggle}
-                      value='active'
+                      value="confirmed"
                     />
                     <span>מאומתים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='type'
-                      id=''
-                      checked={typeOfCases === 'deceased'}
+                      type="radio"
+                      name="typeOfCase"
+                      id=""
+                      checked={typeOfCases === "deceased"}
                       onChange={onRadioToggle}
-                      value='serious'
+                      value="deceased"
                     />
                     <span>נפטרים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='type'
-                      id=''
-                      checked={typeOfCases === 'respirated'}
+                      type="radio"
+                      name="typeOfCase"
+                      id=""
+                      checked={typeOfCases === "respirated"}
                       onChange={onRadioToggle}
-                      value='serious'
+                      value="respirated"
                     />
                     <span>מונשמים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='type'
-                      id=''
-                      checked={typeOfCases === 'serious'}
+                      type="radio"
+                      name="typeOfCase"
+                      id=""
+                      checked={typeOfCases === "serious"}
                       onChange={onRadioToggle}
-                      value='serious'
+                      value="serious"
                     />
                     <span>מצב קשה</span>
                   </label>
@@ -294,56 +369,56 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
                 <div className={styles.radioBtns}>
                   <label>
                     <input
-                      type='radio'
-                      name='time1'
-                      id=''
-                      checked={timeframe === 'all'}
+                      type="radio"
+                      name="time2"
+                      id=""
+                      checked={timeframe === "all"}
                       onChange={onRadioToggle2}
-                      value='all'
+                      value="all"
                     />
                     <span>עד עכשיו</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='time1'
-                      id=''
-                      checked={timeframe === 'year'}
+                      type="radio"
+                      name="time2"
+                      id=""
+                      checked={timeframe === "year"}
                       onChange={onRadioToggle2}
-                      value='year'
+                      value="year"
                     />
                     <span>שנה</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='time1'
-                      id=''
-                      checked={timeframe === '6-months'}
+                      type="radio"
+                      name="time2"
+                      id=""
+                      checked={timeframe === "6-months"}
                       onChange={onRadioToggle2}
-                      value='6-months'
+                      value="6-months"
                     />
                     <span>6 חודשים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='time1'
-                      id=''
-                      checked={timeframe === '3-months'}
+                      type="radio"
+                      name="time2"
+                      id=""
+                      checked={timeframe === "3-months"}
                       onChange={onRadioToggle2}
-                      value='3-months'
+                      value="3-months"
                     />
                     <span>3 חודשים</span>
                   </label>
                   <label>
                     <input
-                      type='radio'
-                      name='time1'
-                      id=''
-                      checked={timeframe === '1-month'}
+                      type="radio"
+                      name="time2"
+                      id=""
+                      checked={timeframe === "1-month"}
                       onChange={onRadioToggle2}
-                      value='1-month'
+                      value="1-month"
                     />
                     <span>חודש אחרון</span>
                   </label>
@@ -359,14 +434,14 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
         <div className={styles.legend}>
           <div>
             <span
-              style={{ backgroundColor: '#50cbfd' }}
+              style={{ backgroundColor: "#50cbfd" }}
               className={styles.circle}
             ></span>
             <span>גברים</span>
           </div>
           <div>
             <span
-              style={{ backgroundColor: '#b6ca51' }}
+              style={{ backgroundColor: "#b6ca51" }}
               className={styles.circle}
             ></span>
             <span>נשים</span>
@@ -398,7 +473,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
           <CartesianGrid />
           <YAxis
             dataKey='range'
-            // ticks={[xAxisTickInfo]}
+            // ticks={[ageGroupStaticStringArray]}
 
             fontSize={'0.75rem'}
             // tickCount={10}
@@ -407,7 +482,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
             tickLine={{ strokeWidth: 0.2 }}
             axisLine={{ stroke: '#cccccc' }}
             // tickFormatter={(value, idx) => {
-            //   return xAxisTickInfo[idx];
+            //   return ageGroupStaticStringArray[idx];
             // }}
             type='category'
             reversed={true}
@@ -418,7 +493,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
               //this is percentange so we can have fixed ticks
               //no need for more than 30%, hence why 30 is the max
               if (idx > 6) return '';
-              return yAxisArray[idx];
+              return bottomAxisStaticArray[idx];
             }}
             fontSize={'0.75rem'}
             axisLine={false}
@@ -431,7 +506,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
             info={['גברים', 'נשים']}
             colors={['#50cbfd', '#b6ca51']}
             isAgeGroups={true}
-            ageGroups={xAxisTickInfo}
+            ageGroups={ageGroupStaticStringArray}
             content={<CustomTooltip />}
           />
           <Bar dataKey='women_percent' fill='#b6ca51' />
