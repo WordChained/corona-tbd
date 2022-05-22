@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import styles from "./AppHeader.module.css";
 import logo from "../../assets/imgs/logo_DAshboard-01.png";
 import brightnessDark from "../../assets/icons/brightness_dark.png";
@@ -6,7 +6,20 @@ import brightnessLight from "../../assets/icons/brightness_light.png";
 import { useIntersection } from "../../customHooks/useIntersection";
 import { useWindowSize } from "../../customHooks/useWindowSize";
 import { IoMenuOutline } from "react-icons/io5";
+
+import { ThemeContext } from "../../store/context/ThemeContext";
 export const AppHeader = ({ elementInView, setClickedTitle }) => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
+  const onThemeChange = () => {
+    if (darkMode) {
+      theme.dispatch({ type: "LIGHTMODE" });
+    } else {
+      theme.dispatch({ type: "DARKMODE" });
+    }
+  };
+
   const [stickHeader, setStickHeader] = useState(false);
   const [showNavbar2, setShowNavbar2] = useState(false);
   const windowSize = useWindowSize();
@@ -105,16 +118,21 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
         break;
     }
   };
+
   const removeClasses = (children) => {
+    if (!children) return;
     for (let i = 0; i < children.length; i++) {
       children[i].classList.remove(`${styles.active}`);
     }
   };
+
   useEffect(() => {
     if (elementInView === null || !navRef.current) return;
     if (window.scrollY === 0) {
       const children = navRef.current.firstChild.children;
       const children2 = navRef2.current.firstChild.children;
+      removeClasses(children);
+      removeClasses(children2);
       children[0].classList.add(`${styles.active}`);
       children2[0].classList.add(`${styles.active}`);
 
@@ -139,6 +157,7 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
       ? children[ev.target.id - 1].scrollIntoView({ inline: "center" })
       : children2[ev.target.id - 1].scrollIntoView({ inline: "center" });
   };
+
   return (
     <section
       className={`${styles.overContainer} ${stickHeader ? styles.stick : ""}`}
@@ -153,8 +172,11 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
             <img className={styles.logo} src={logo} alt="" />
           </div>
         </div>
-        <button className={styles.brightnessBtn}>
-          <img src={brightnessDark} alt="" />
+        <button
+          onClick={onThemeChange}
+          className={`${styles.brightnessBtn} ${darkMode ? styles.dark : ""}`}
+        >
+          <img src={darkMode ? brightnessLight : brightnessDark} alt="" />
         </button>
         <h1 className={styles.updateTitle}>
           <b>נגיף הקורונה בישראל - תמונת מצב כללית</b>
@@ -164,7 +186,10 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
           </div>
         </h1>
       </header>
-      <nav ref={navRef} className={styles.navbar}>
+      <nav
+        ref={navRef}
+        className={`${styles.navbar} ${darkMode ? styles.dark : ""}`}
+      >
         <ul>
           <li onClick={jumpToSection} id="1" ref={ref1}>
             מבט על
@@ -191,7 +216,9 @@ export const AppHeader = ({ elementInView, setClickedTitle }) => {
       </nav>
       <nav
         ref={navRef2}
-        className={`${styles.navbar2} ${showNavbar2 ? styles.show : ""}`}
+        className={`${styles.navbar2} ${
+          showNavbar2 && windowSize.width <= 800 ? styles.show : ""
+        } ${darkMode ? styles.dark : ""}`}
       >
         <ul>
           <li onClick={jumpToSection} id="1" ref={ref1nav2}>

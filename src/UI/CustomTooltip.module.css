@@ -7,6 +7,9 @@
   border-radius: 5px;
   font-size: 0.9rem;
 }
+.container.dark {
+  background-color: rgb(28, 40, 54);
+}
 
 .circle {
   display: inline-block;

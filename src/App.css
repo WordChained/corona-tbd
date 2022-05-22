@@ -14,3 +14,6 @@
   background-color: #969696;
   border-radius: 3em;
 }
+.App.dark {
+  color: white;
+}

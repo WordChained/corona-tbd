@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Card.module.css";
 import { IoIosInformationCircle } from "react-icons/io";
 import { useWindowSize } from "../customHooks/useWindowSize";
+import { ThemeContext } from "../store/context/ThemeContext";
 export const Card = ({
   children,
   title,
@@ -9,6 +10,8 @@ export const Card = ({
   inSummary = false,
   info = "",
 }) => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
   const [showInfo, setShowInfo] = useState(false);
   const windowSize = useWindowSize();
   const onInfoHover = () => {
@@ -24,7 +27,11 @@ export const Card = ({
     setShowInfo(true);
   };
   return (
-    <div className={`${styles.card} ${inSummary ? styles.summary : ""}`}>
+    <div
+      className={`${styles.card} ${inSummary ? styles.summary : ""} ${
+        darkMode ? styles.dark : ""
+      }`}
+    >
       <div className={styles.cardHeaderContainer}>
         <h4>{title}</h4>
         <div

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./BigCard.module.css";
 import { RiMore2Fill } from "react-icons/ri";
 import { IoIosInformationCircle } from "react-icons/io";
 import { useWindowSize } from "../customHooks/useWindowSize";
+import { ThemeContext } from "../store/context/ThemeContext";
 export const BigCard = ({
   children,
   title,
@@ -12,6 +13,8 @@ export const BigCard = ({
   isFullWidth = false,
   isAloneInGroup = false,
 }) => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
   const [showInfo, setShowInfo] = useState(false);
   const windowSize = useWindowSize();
   const onInfoHover = () => {
@@ -30,7 +33,7 @@ export const BigCard = ({
     <div
       className={`${styles.card} ${isFullWidth ? styles.fullWidth : ""} ${
         isAloneInGroup ? styles.bigger : ""
-      }`}
+      } ${darkMode ? styles.dark : ""}`}
     >
       <div className={styles.cardHeaderContainer}>
         <h4>{title}</h4>

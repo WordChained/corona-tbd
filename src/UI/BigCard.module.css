@@ -16,6 +16,12 @@
   max-width: 600px;
   min-width: 355px;
 }
+.card.dark {
+  background-color: #384f5f;
+}
+.card.dark .cardHeaderContainer svg {
+  color: white;
+}
 @media (min-width: 1250px) {
   .card {
     width: 600px;

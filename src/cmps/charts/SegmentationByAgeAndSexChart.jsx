@@ -158,7 +158,7 @@ export const SegmentationByAgeAndSexChart = ({ data, chartSize }) => {
         100
       ).toFixed(1);
     });
-    console.log(ageGroups);
+    // console.log(ageGroups);
     setFilteredData(ageGroups);
 
     setMenData(ageGroups.map((item) => item.men_percent));

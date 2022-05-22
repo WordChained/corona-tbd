@@ -32,6 +32,9 @@
   font-size: 0.9rem;
   top: 90px;
 }
+.yHeader.dark {
+  color: white;
+}
 
 .labels {
   font-family: Open-Sans-Hebrew-Bold;
@@ -52,6 +55,13 @@
   flex-direction: column;
   justify-content: start;
   align-items: flex-start;
+}
+.btnContainer.dark {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #2a3b47;
+  color: white;
 }
 .innerList {
   width: 100%;

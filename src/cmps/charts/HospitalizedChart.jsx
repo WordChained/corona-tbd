@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./HospitalizedChart.module.css";
 import {
   AreaChart,
@@ -13,8 +13,11 @@ import {
 import { Sorter } from "../../UI/Sorter";
 import { CustomTooltip } from "../../UI/CustomTooltip";
 import { CustomLabel } from "../../UI/CustomLabel";
-
+import { ThemeContext } from "../../store/context/ThemeContext";
 export const HospitalizedChart = ({ data, chartSize }) => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
   const [isIncludeSerious, setIsIncludeSerious] = useState(true);
   const [isIncludeMedium, setIsIncludeMedium] = useState(true);
   const [isIncludeLight, setIsIncludeLight] = useState(true);
@@ -102,7 +105,7 @@ export const HospitalizedChart = ({ data, chartSize }) => {
   };
   if (!data || !data.length) return <div>loader</div>;
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}${darkMode ? styles.dark : ""}`}>
       <div>
         <div style={{ marginTop: "20px" }}>
           <Sorter
@@ -201,7 +204,11 @@ export const HospitalizedChart = ({ data, chartSize }) => {
                   </label>
                 </div>
               </div>
-              <div className={styles.btnContainer}>
+              <div
+                className={`${styles.btnContainer} ${
+                  darkMode ? styles.dark : ""
+                }`}
+              >
                 <button onClick={onFilterConfirm}>אישור</button>
                 <button onClick={onFilterCancel}>ביטול</button>
               </div>
@@ -211,21 +218,21 @@ export const HospitalizedChart = ({ data, chartSize }) => {
         <div className={styles.legend}>
           <div>
             <span
-              style={{ backgroundColor: "#3bc3fb" }}
+              style={{ backgroundColor: darkMode ? "#2cd2db" : "#3bc3fb" }}
               className={styles.circle}
             ></span>
             <span>קשה</span>
           </div>
           <div>
             <span
-              style={{ backgroundColor: "#c1d750" }}
+              style={{ backgroundColor: darkMode ? "#fd8264" : "#c1d750" }}
               className={styles.circle}
             ></span>
             <span>בינוני</span>
           </div>
           <div>
             <span
-              style={{ backgroundColor: "#167070" }}
+              style={{ backgroundColor: darkMode ? "#9be985" : "#167070" }}
               className={styles.circle}
             ></span>
             <span>קל</span>
@@ -247,21 +254,32 @@ export const HospitalizedChart = ({ data, chartSize }) => {
         >
           <CartesianGrid vertical={false} />
           <XAxis
+            padding={{ right: 10, left: 10 }}
             dataKey="date"
             fontSize={"0.75rem"}
+            // color={darkMode ? "white" : "black"}
             // axisLine={false}
             // tickLine={false}
             tickMargin={5}
             tickSize={12}
-            tickLine={{ strokeWidth: 0.2 }}
-            axisLine={{ stroke: "#cccccc" }}
+            tickLine={{
+              strokeWidth: 0.3,
+              stroke: darkMode ? "white" : "black",
+            }}
+            axisLine={{ stroke: darkMode ? "#fff" : "#cccccc" }}
             tickFormatter={(value) => [
               new Date(value).toLocaleDateString("he-IL", {
                 day: "2-digit",
                 month: "2-digit",
               }),
             ]}
-            label={{ value: `תאריך`, position: "bottom", fontSize: "0.9rem" }}
+            label={{
+              value: `תאריך`,
+              position: "bottom",
+              fontSize: "0.9rem",
+              fill: darkMode ? "white" : "black",
+            }}
+            tick={{ fill: darkMode ? "white" : "black" }}
             // label={<CustomLabel key='תאריך' />}
           />
           <YAxis
@@ -269,7 +287,10 @@ export const HospitalizedChart = ({ data, chartSize }) => {
             axisLine={false}
             tickLine={false}
             tickMargin={10}
-            tick={{ stroke: "black", strokeWidth: 0.1 }}
+            tick={{
+              fill: darkMode ? "white" : "black",
+              strokeWidth: 0.1,
+            }}
             // label={{
             //   value: `מספר מאושפזים`,
             //   position: 'top',
@@ -279,7 +300,11 @@ export const HospitalizedChart = ({ data, chartSize }) => {
           {!!filteredData.length && (
             <Tooltip
               info={["קשה", "בינוני", "קל"]}
-              colors={["#3bc3fb", "#c1d750", "#167070"]}
+              colors={
+                darkMode
+                  ? ["#30abb6", "#c27363", "#7dbb7a"]
+                  : ["#3bc3fb", "#c1d750", "#167070"]
+              }
               content={<CustomTooltip />}
             />
           )}
@@ -287,13 +312,13 @@ export const HospitalizedChart = ({ data, chartSize }) => {
             type="monotone"
             dataKey="serious"
             stackId="1"
-            stroke="#3bc3fb"
-            fill="#3bc3fb"
+            stroke={darkMode ? "#30abb6" : "#3bc3fb"}
+            fill={darkMode ? "#30abb6" : "#3bc3fb"}
             legendType="dot"
             dot={{
-              fill: "#14b3f5",
+              fill: darkMode ? "#2cd2db" : "#14b3f5",
               strokeWidth: 0.5,
-              stroke: "white",
+              stroke: darkMode ? "black" : "white",
               r: 4,
             }}
           />
@@ -301,13 +326,13 @@ export const HospitalizedChart = ({ data, chartSize }) => {
             type="monotone"
             dataKey="medium"
             stackId="1"
-            stroke="#c1d750"
-            fill="#c1d750"
+            stroke={darkMode ? "#c27363" : "#c1d750"}
+            fill={darkMode ? "#c27363" : "#c1d750"}
             legendType="dot"
             dot={{
-              fill: "#3fa80f",
+              fill: darkMode ? "#fd8264" : "#3fa80f",
               strokeWidth: 0.5,
-              stroke: "white",
+              stroke: darkMode ? "black" : "white",
               r: 4,
             }}
           />
@@ -315,13 +340,13 @@ export const HospitalizedChart = ({ data, chartSize }) => {
             type="monotone"
             dataKey="light"
             stackId="1"
-            stroke="#167070"
-            fill="#167070"
+            stroke={darkMode ? "#7dbb7a" : "#167070"}
+            fill={darkMode ? "#7dbb7a" : "#167070"}
             legendType="dot"
             dot={{
-              fill: "#167070",
+              fill: darkMode ? "#9be985" : "#167070",
               strokeWidth: 0.8,
-              stroke: "white",
+              stroke: darkMode ? "black" : "white",
               r: 4,
             }}
           />

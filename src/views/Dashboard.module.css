@@ -4,6 +4,10 @@
   padding: 10px 10px 8px 10px;
   padding-bottom: 450px;
 }
+.container.dark,
+.container.container.pushUp.dark {
+  background-color: #426074;
+}
 .container.pushUp {
   margin-top: 126px;
 }

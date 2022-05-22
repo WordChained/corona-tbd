@@ -37,6 +37,12 @@
   background-color: #ffffff;
   /* overflow: hidden; */
 }
+.bigCard.dark {
+  background-color: #384f5f;
+}
+.bigCard.dark .cardHeaderContainer svg {
+  color: white;
+}
 @media (min-width: 800px) {
   .bigCard {
     height: 220px;

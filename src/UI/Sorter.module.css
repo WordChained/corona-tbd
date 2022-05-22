@@ -7,6 +7,16 @@
   margin-bottom: 10px;
   cursor: pointer;
 }
+.container.dark .arrow svg {
+  color: #8f9bb3;
+}
+.container.dark .mainDropdown {
+  background-color: #4e6275;
+  border: 1px solid #79858e;
+}
+.container.dark .menu {
+  background-color: #384f5f;
+}
 .mainDropdown {
   border-radius: 3em;
   border: 1px #e3e5ea solid;
@@ -18,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #e9ecf286;
+  align-items: center;
 }
 
 .arrow svg {
@@ -33,7 +44,8 @@
 .menu {
   position: absolute;
   display: none;
-  width: 100%;
+  /* width: 100%; */
+  min-width: 200px;
   background-color: white;
   border: 1px #e4e9f2 solid;
   /* padding: 3px; */

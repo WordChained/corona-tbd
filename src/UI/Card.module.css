@@ -14,6 +14,12 @@
   font-size: 0.95rem;
   position: relative;
 }
+.card.dark {
+  background-color: #384f5f;
+}
+.card.dark .cardHeaderContainer svg {
+  color: white;
+}
 @media (min-width: 800px) {
   .card {
     width: 100%;

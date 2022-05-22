@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Overlook.module.css';
-import { Card } from '../../UI/Card';
-import { useWindowSize } from '../../customHooks/useWindowSize';
-import { formatNumber } from '../../services/utilService';
+import React, { useContext, useEffect, useState } from "react";
+import styles from "./Overlook.module.css";
+import { Card } from "../../UI/Card";
+import { useWindowSize } from "../../customHooks/useWindowSize";
+import { formatNumber } from "../../services/utilService";
 import {
   confirmedDataInfo,
   seriouslyMorbidInfo,
@@ -14,20 +14,23 @@ import {
   seriouslyIllPast7DaysInfo,
   deceasedPast7DaysInfo,
   testedPast7DaysInfo,
-} from '../../views/infoBoxData';
+} from "../../views/infoBoxData";
+import { ThemeContext } from "../../store/context/ThemeContext";
 export const Overlook = ({ dailyData, weeklyData }) => {
-  const [boldNumberSize, setBoldNumberSize] = useState({ fontSize: '1rem' });
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+  const [boldNumberSize, setBoldNumberSize] = useState({ fontSize: "1rem" });
   const windowSize = useWindowSize();
   useEffect(() => {
-    if (windowSize.width > 700) setBoldNumberSize({ fontSize: '1.4rem' });
-    else setBoldNumberSize({ fontSize: '1rem' });
+    if (windowSize.width > 700) setBoldNumberSize({ fontSize: "1.4rem" });
+    else setBoldNumberSize({ fontSize: "1rem" });
   }, [windowSize.width]);
 
   if (dailyData === null || weeklyData === null) return <div>LOADER...</div>;
   return (
     <section className={styles.container}>
       <div className={styles.cardsContainer}>
-        <Card title='מאומתים אתמול' info={confirmedDataInfo}>
+        <Card title="מאומתים אתמול" info={confirmedDataInfo}>
           <span
             style={boldNumberSize}
             className={`${styles.bold} ${styles.numberDirection}`}
@@ -64,7 +67,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
             <span>בבי"ח</span>
           </span>
         </Card>
-        <Card title='חולים קשה' info={seriouslyMorbidInfo}>
+        <Card title="חולים קשה" info={seriouslyMorbidInfo}>
           <span
             style={boldNumberSize}
             className={`${styles.bold} ${styles.numberDirection}`}
@@ -106,7 +109,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
             </li>
           </ul>
         </Card>
-        <Card title='מתחסנים' info={vaccinatedInfo}>
+        <Card title="מתחסנים" info={vaccinatedInfo}>
           <ul className={styles.doseList}>
             <li>
               <span>מנה 1</span>
@@ -134,12 +137,12 @@ export const Overlook = ({ dailyData, weeklyData }) => {
             </li>
           </ul>
         </Card>
-        <Card title='נפטרים מצטבר' info={deceasedInfo}>
+        <Card title="נפטרים מצטבר" info={deceasedInfo}>
           <div style={boldNumberSize} className={styles.bold}>
             {formatNumber(dailyData.deceased.total)}
           </div>
         </Card>
-        <Card title='אחוז נבדקים חיוביים אתמול' info={testedPositiveInfo}>
+        <Card title="אחוז נבדקים חיוביים אתמול" info={testedPositiveInfo}>
           <span
             style={boldNumberSize}
             className={`${styles.bold} ${styles.numberDirection}`}
@@ -161,7 +164,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
             </div>
           </div>
         </Card>
-        <Card title='מבודדים חדשים אתמול' info={isolatedInfo}>
+        <Card title="מבודדים חדשים אתמול" info={isolatedInfo}>
           <div
             style={boldNumberSize}
             className={`${styles.bold} ${styles.numberDirection}`}
@@ -179,11 +182,11 @@ export const Overlook = ({ dailyData, weeklyData }) => {
           </div>
         </Card>
       </div>
-      <div className={styles.bigCard}>
+      <div className={`${styles.bigCard} ${darkMode ? styles.dark : ""}`}>
         <h3>סיכום 7 ימים אחרונים</h3>
         <div className={styles.innerCardsContainer}>
           <Card
-            title='מספר המאומתים'
+            title="מספר המאומתים"
             inSummary={true}
             info={numOfConfirmedPast7DaysInfo}
           >
@@ -203,7 +206,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
           </Card>
           <Card
             inSummary={true}
-            title='מספר חולים קשה'
+            title="מספר חולים קשה"
             info={seriouslyIllPast7DaysInfo}
           >
             <div
@@ -224,7 +227,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
           </Card>
           <Card
             inSummary={true}
-            title='מספר הנפטרים'
+            title="מספר הנפטרים"
             info={deceasedPast7DaysInfo}
           >
             <div
@@ -240,7 +243,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
               <span>משבעה ימים קודמים</span>
             </div>
           </Card>
-          <Card inSummary={true} title='מספר נבדקים' info={testedPast7DaysInfo}>
+          <Card inSummary={true} title="מספר נבדקים" info={testedPast7DaysInfo}>
             <div
               style={boldNumberSize}
               className={`${styles.bold} ${styles.numberDirection}`}
@@ -249,7 +252,7 @@ export const Overlook = ({ dailyData, weeklyData }) => {
             </div>
             <div className={styles.bigCardRow}>
               <span className={`${styles.bold} ${styles.numberDirection}`}>
-                {weeklyData.tested.totalPast7Days > 0 ? '+' : '-'}
+                {weeklyData.tested.totalPast7Days > 0 ? "+" : "-"}
                 {formatNumber(weeklyData.tested.relativeToPast7Days_percent)}%
               </span>
               <span>משבעה ימים קודמים</span>
