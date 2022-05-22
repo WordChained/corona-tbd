@@ -52,6 +52,7 @@
 }
 .btnContainer button {
   cursor: pointer;
+  font-size: 1rem;
 }
 .sorterChildrenContainer {
   /* margin-top: 10px; */
@@ -93,4 +94,19 @@
   .container.noWrap {
     flex-wrap: nowrap;
   }
+}
+
+/* dark mode */
+
+.yHeader.dark {
+  color: white;
+}
+.btnContainer.dark {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #2a3b47;
+}
+.btnContainer.dark button {
+  color: white;
 }

@@ -47,11 +47,12 @@
   /* width: 100%; */
   min-width: 200px;
   background-color: white;
-  border: 1px #e4e9f2 solid;
+  border: 1px #79858e solid;
   /* padding: 3px; */
   border-radius: 10px;
   top: 110%;
   right: 0;
+  overflow: hidden;
 }
 
 .menu.open {

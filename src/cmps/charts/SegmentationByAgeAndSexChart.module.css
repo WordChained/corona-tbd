@@ -44,15 +44,24 @@ canvas {
   bottom: 7px;
   z-index: 5;
 }
-.customTooltip {
+.customTooltipContainer.dark {
+  color: white;
   font-family: Open-Sans-Hebrew;
   display: flex;
   flex-direction: column;
   direction: rtl;
   text-align: start;
-  color: black;
+  /* color: black; */
   padding: 0;
   margin: 0;
+  border: none !important;
+}
+
+.customTooltipContainer.dark .customTooltip {
+  color: white;
+}
+.customTooltipContainer .customTooltip {
+  color: black;
 }
 .row {
   display: flex;
@@ -80,6 +89,7 @@ canvas {
 }
 .btnContainer button {
   cursor: pointer;
+  font-size: 1rem;
 }
 .sorterChildrenContainer {
   /* margin-top: 10px; */
@@ -121,4 +131,19 @@ canvas {
   .container.noWrap {
     flex-wrap: nowrap;
   }
+}
+
+/* dark mode */
+
+.yHeader.dark {
+  color: white;
+}
+.btnContainer.dark {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  background-color: #2a3b47;
+}
+.btnContainer.dark button {
+  color: white;
 }
