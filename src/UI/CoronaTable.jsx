@@ -1,7 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
-import styles from './CoronaTable.module.css';
-import { FaCaretDown, FaCaretUp } from 'react-icons/fa';
+import React, { useState, useRef, useEffect, useContext } from "react";
+import styles from "./CoronaTable.module.css";
+import { FaCaretDown, FaCaretUp } from "react-icons/fa";
+import { ThemeContext } from "../store/context/ThemeContext";
 export const CoronaTable = ({ titles = [], children, sortFunction }) => {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
   const [isDownSort, setIsDownSort] = useState(false);
   const [currentElement, setCurrentElement] = useState(null);
   const tableHeaderRef = useRef();
@@ -10,13 +14,13 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
       ev.stopPropagation();
       let target;
       switch (ev.target.tagName.toLowerCase()) {
-        case 'span':
+        case "span":
           target = ev.target.parentElement;
           break;
-        case 'svg':
+        case "svg":
           target = ev.target?.parentElement?.parentElement;
           break;
-        case 'path':
+        case "path":
           target = ev.target?.parentElement?.parentElement;
           break;
         default:
@@ -35,22 +39,22 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
         );
       }
     };
-    document.addEventListener('click', removeActiveClasses);
+    document.addEventListener("click", removeActiveClasses);
     return () => {
-      document.removeEventListener('click', removeActiveClasses);
+      document.removeEventListener("click", removeActiveClasses);
     };
   }, []);
 
   const onHeaderClick = (ev) => {
     let target;
     switch (ev.target.tagName.toLowerCase()) {
-      case 'span':
+      case "span":
         target = ev.target.parentElement;
         break;
-      case 'svg':
+      case "svg":
         target = ev.target.parentElement.parentElement;
         break;
-      case 'path':
+      case "path":
         target = ev.target.parentElement.parentElement.parentElement;
         break;
       default:
@@ -67,13 +71,13 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
   const onTitleClick = (ev) => {
     let target;
     switch (ev.target.tagName.toLowerCase()) {
-      case 'span':
+      case "span":
         target = ev.target.parentElement;
         break;
-      case 'svg':
+      case "svg":
         target = ev.target.parentElement.parentElement;
         break;
-      case 'path':
+      case "path":
         target = ev.target.parentElement.parentElement.parentElement;
         break;
       default:
@@ -106,7 +110,7 @@ export const CoronaTable = ({ titles = [], children, sortFunction }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       {
         <div ref={tableHeaderRef} className={styles.tableHeader}>
           {titles.map((title, idx) => (

@@ -4,6 +4,7 @@
   height: auto;
   color: black;
 }
+
 .tableHeader {
   position: sticky;
   display: flex;
@@ -69,4 +70,11 @@
   .arrow {
     bottom: -6px;
   }
+}
+/* dark mode */
+.container.dark {
+  color: white;
+}
+.container.dark .tableHeader > * {
+  background-color: #2a3b47;
 }

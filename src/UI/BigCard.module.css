@@ -22,6 +22,11 @@
 .card.dark .cardHeaderContainer svg {
   color: white;
 }
+.card.dark .infoBox {
+  background-color: #384f5f;
+  color: white;
+  box-shadow: 0 0 10px 1px rgba(36, 36, 36, 0.479);
+}
 @media (min-width: 1250px) {
   .card {
     width: 600px;

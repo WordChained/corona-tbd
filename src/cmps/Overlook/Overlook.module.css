@@ -43,6 +43,7 @@
 .bigCard.dark .cardHeaderContainer svg {
   color: white;
 }
+
 @media (min-width: 800px) {
   .bigCard {
     height: 220px;
