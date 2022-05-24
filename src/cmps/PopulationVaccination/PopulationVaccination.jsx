@@ -37,6 +37,7 @@ export const PopulationVaccination = () => {
     setIsText(false);
     filterSuggestions([]);
   };
+
   const getColorForDailyScore = (score) => {
     switch (true) {
       case score <= 4.5:
@@ -227,7 +228,7 @@ export const PopulationVaccination = () => {
   }, [data]);
 
   return (
-    <section className={styles.container}>
+    <section className={`${styles.container} ${darkMode ? styles.dark : ""}`}>
       <BigCard
         title={"התחסנות לפי ישובים"}
         isFullWidth={true}
@@ -253,7 +254,11 @@ export const PopulationVaccination = () => {
                 <IoIosCloseCircle />
               </span>
             </div>
-            <div className={styles.btnContainer}>
+            <div
+              className={`${styles.btnContainer} ${
+                darkMode ? styles.dark : ""
+              }`}
+            >
               {!suggestions.length ? (
                 <>
                   <button onClick={filterData}>אישור</button>
@@ -341,6 +346,8 @@ export const PopulationVaccination = () => {
                 <div>
                   <div
                     style={{
+                      color: darkMode ? "black" : "white",
+                      fontWeight: 900,
                       backgroundColor: getColorForDailyScore(
                         row.dailyScore ? row.dailyScore : "אין מידע"
                       ),
